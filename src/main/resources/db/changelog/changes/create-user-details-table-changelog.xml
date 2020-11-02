@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Inaam" id="2">
+
+        <sql>
+
+
+
+            CREATE TABLE `service_market_pakistan`.`user_details` ( `date_of_birth` DATE NOT NULL , `nic_number` VARCHAR(15) NOT NULL , `nic_expiry_date` DATE NOT NULL , `latitude` VARCHAR(100) NOT NULL , `longitude` VARCHAR(100) NOT NULL , `city` VARCHAR(100) NOT NULL , `country` VARCHAR(100) NOT NULL , `last_login` TIMESTAMP NOT NULL , `email` VARCHAR(100) NOT NULL , `created_date` DATE NOT NULL , `id` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`id`)) ;
+
+
+
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>
