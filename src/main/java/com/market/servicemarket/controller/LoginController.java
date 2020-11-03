@@ -1,4 +1,4 @@
-package com.market.servicemarket.controller.login;
+package com.market.servicemarket.controller;
 
 import com.market.servicemarket.request.LoginRequest;
 import com.market.servicemarket.response.BaseResponse;
