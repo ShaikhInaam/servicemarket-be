@@ -15,5 +15,7 @@ public class Constants {
     public static String FAILUARE_RESPNSE_CODE = "00200";
     public static String FAILUARE_RESPONSE_MESSAGE = "something went wrong! we are looking at our end, please try again in sometime";
 
+    public static String INVALID_FIELD_RESPONSE_CODE = "00500";
+    public static String INVALID_FIELD_RESPONSE_MESSAGE = "Required field are empty";
 
 }
