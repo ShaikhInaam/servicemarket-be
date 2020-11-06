@@ -10,12 +10,20 @@
         <sql>
 
 
+            <!--
+                CREATE TABLE `service_market_pakistan`.`user_details` ( `date_of_birth` DATE NOT NULL , `nic_number` VARCHAR(15) NOT NULL , `nic_expiry_date` DATE NOT NULL , `latitude` VARCHAR(100) NOT NULL , `longitude` VARCHAR(100) NOT NULL , `city` VARCHAR(100) NOT NULL , `country` VARCHAR(100) NOT NULL , `last_login` TIMESTAMP NOT NULL , `email` VARCHAR(100) NOT NULL , `created_date` DATE NOT NULL , `id` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`id`)) ;
+            -->
 
-            CREATE TABLE `service_market_pakistan`.`user_details` ( `date_of_birth` DATE NOT NULL , `nic_number` VARCHAR(15) NOT NULL , `nic_expiry_date` DATE NOT NULL , `latitude` VARCHAR(100) NOT NULL , `longitude` VARCHAR(100) NOT NULL , `city` VARCHAR(100) NOT NULL , `country` VARCHAR(100) NOT NULL , `last_login` TIMESTAMP NOT NULL , `email` VARCHAR(100) NOT NULL , `created_date` DATE NOT NULL , `id` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`id`)) ;
+
+            CREATE SEQUENCE user_details_seq;
+
+            CREATE TABLE user_details ( date_of_birth DATE NOT NULL , nic_number VARCHAR(15) NOT NULL , nic_expiry_date DATE NOT NULL ,
+            latitude VARCHAR(100) NOT NULL , longitude VARCHAR(100) NOT NULL , city VARCHAR(100) NOT NULL ,
+            country VARCHAR(100) NOT NULL , last_login TIMESTAMP(0) NOT NULL , email VARCHAR(100) NOT NULL ,
+            created_date DATE NOT NULL , id INT NOT NULL DEFAULT NEXTVAL ('user_details_seq') , PRIMARY KEY (id)) ;
 
 
+            </sql>
 
-        </sql>
-
-    </changeSet>
-</databaseChangeLog>
+        </changeSet>
+    </databaseChangeLog>
