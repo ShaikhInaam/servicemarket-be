@@ -5,21 +5,20 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet author="Inaam" id="1">
+    <changeSet author="Inaam" id="3">
 
         <sql>
 
 
-            <!--
-            CREATE TABLE `service_market_pakistan`.`user`
-            ( `username` VARCHAR(200) NOT NULL , `name` VARCHAR(200) NOT NULL , `user_pass` VARCHAR(5000) NOT NULL ,
-            `status` VARCHAR(200) NOT NULL , PRIMARY KEY (`username`));
-            -->
+            INSERT INTO users(username, name, user_pass, status) VALUES ('inaam','Inaam Ishaque Shaikh',
+            'ACAC320B6D15328ACAEBAF71B4931B02','active');
 
-            CREATE TABLE users
-            ( username VARCHAR(200) NOT NULL , name VARCHAR(200) NOT NULL , user_pass VARCHAR(5000) NOT NULL ,
-            status VARCHAR(200) NOT NULL );
-            
+            INSERT INTO users(username, name, user_pass, status) VALUES ('azher','Azhar Bhatti',
+            'ACAC320B6D15328ACAEBAF71B4931B02','suspended');
+
+            INSERT INTO users(username, name, user_pass, status) VALUES ('pawan','Pawan Khatri',
+            'ACAC320B6D15328ACAEBAF71B4931B02','delete');
+
 
         </sql>
 
