@@ -28,7 +28,7 @@ public class LoginBusinessImpl implements LoginBusiness {
             if(UserConstants.ACTIVE.equals(userEntity.getStatus())){
 
 
-                
+
 
 
                 BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
