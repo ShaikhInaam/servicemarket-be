@@ -10,5 +10,6 @@ import lombok.Setter;
 public class UserToken{
 
     private String token;
+    private String validity;
 
 }
