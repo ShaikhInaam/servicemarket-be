@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Inaam" id="5">
+
+        <sql>
+
+
+            INSERT INTO user_details(date_of_birth, nic_number, nic_expiry_date, latitude, longitude, city,
+            country, last_login, email, created_date, username) VALUES (
+            '1996-03-02','43041775555788', '2023-03-14', '2.175448', '3.5478', 'Karachi', 'Pakistan',
+            '2020-11-07 19:10:25', 'shaikhinaam2@gmail.com', '2020-03-14', 'inaam');
+
+
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>
