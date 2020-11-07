@@ -1,11 +1,21 @@
 package com.market.servicemarket.response;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.*;
 
-@Data
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@Setter
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BaseResponse {
 
     private String responseCode;
     private String responseMessage;
     private Object response;
+
+
+
+
 }

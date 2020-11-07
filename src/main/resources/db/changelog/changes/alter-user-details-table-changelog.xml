@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Inaam" id="4">
+
+        <sql>
+
+            ALTER TABLE user_details
+            ADD COLUMN username VARCHAR(500);
 
 
 
-    <include file="/db/changelog/changes/create-user-table-changelog.xml"/>
-    <include file="/db/changelog/changes/create-user-details-table-changelog.xml"/>
-    <include file="/db/changelog/changes/dummy-user-insertion.xml"/>
-    <include file="/db/changelog/changes/alter-user-details-table-changelog.xml"/>
-    <include file="/db/changelog/changes/dummy-user-details-insertion.xml"/>
 
+        </sql>
+
+    </changeSet>
 </databaseChangeLog>
