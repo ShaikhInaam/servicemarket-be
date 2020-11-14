@@ -3,19 +3,11 @@ package com.market.servicemarket.interceptor;
 
 
 import com.market.servicemarket.entity.InceptorInfo;
-import com.market.servicemarket.repository.InceptorRepository;
 import com.market.servicemarket.service.InceptorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,14 +21,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CustomInterceptor implements HandlerInterceptor {
+public class UsageAnalysisInterceptor implements HandlerInterceptor {
 
     @Autowired(required = true)
     InceptorService inceptorService;
 
-    @Autowired
-    InceptorRepository inceptorRepository;
-    private static Logger log = LoggerFactory.getLogger(CustomInterceptor.class);
+   // @Autowired
+    //InceptorRepository inceptorRepository;
+    private static Logger log = LoggerFactory.getLogger(UsageAnalysisInterceptor.class);
     String actionName="";
     String id= "";
     String url="";

@@ -10,10 +10,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 //@Component
 //@Document(collection = "inceptor")
-@Entity
-@Table(schema = "inceptor_log",name="sm_usage_Analytics")
-//@Profile("inceptorinfos")
-@Component
+
 public class InceptorInfo {
 
     @Id

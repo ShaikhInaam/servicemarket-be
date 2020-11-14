@@ -6,10 +6,10 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 @Component
-public class CustomInterceptorConfig extends WebMvcConfigurationSupport {
+public class InterceptorConfig extends WebMvcConfigurationSupport {
 
     @Autowired
-    private CustomInterceptor customInterceptor;
+    private UsageAnalysisInterceptor customInterceptor;
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {

@@ -1,8 +1,7 @@
 package com.market.servicemarket.service;
 
 import com.market.servicemarket.entity.InceptorInfo;
-import com.market.servicemarket.interceptor.CustomInterceptor;
-import com.market.servicemarket.repository.InceptorRepository;
+import com.market.servicemarket.interceptor.UsageAnalysisInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -19,11 +18,11 @@ public class InceptorService {
     String ip_2;
     String method_type="";
 
-    @Autowired
-    private InceptorRepository inceptorRepository;
+   // @Autowired
+   // private InceptorRepository inceptorRepository;
 
     @Autowired
-    CustomInterceptor customInterceptor;
+    UsageAnalysisInterceptor customInterceptor;
 
     @Scheduled(fixedRate = 10000)  //After every 10 seconds hit the repository
     public void add2DBJob() {
@@ -56,7 +55,7 @@ public class InceptorService {
         inceptorInfo.setUrl(url);
         inceptorInfo.setIp_one(ip_1);
         inceptorInfo.setIp_two(ip_2);
-        inceptorRepository.save(inceptorInfo);
+       // inceptorRepository.save(inceptorInfo);
 
     }
 
