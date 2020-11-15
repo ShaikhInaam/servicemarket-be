@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class UsageAnalysisEntity implements Serializable {
 
     @Id
-    private long id;
+    private Integer id;
 
     private String method;
     private String operation;

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Inaam" id="3">
+
+        <sql>
+
+
+            INSERT INTO users(username, name, user_pass, status) VALUES ('inaam','Inaam Ishaque Shaikh',
+            'ACAC320B6D15328ACAEBAF71B4931B02','active');
+
+            INSERT INTO users(username, name, user_pass, status) VALUES ('azher','Azhar Bhatti',
+            'ACAC320B6D15328ACAEBAF71B4931B02','suspended');
+
+            INSERT INTO users(username, name, user_pass, status) VALUES ('pawan','Pawan Khatri',
+            'ACAC320B6D15328ACAEBAF71B4931B02','delete');
+
+
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>

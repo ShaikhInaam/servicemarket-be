@@ -2,6 +2,7 @@ package com.market.servicemarket.interceptor;
 
 
 
+import com.market.servicemarket.ServicemarketApplication;
 import com.market.servicemarket.service.InceptorService;
 import com.market.servicemarket.usage_analysis_entity.UsageAnalysisEntity;
 import com.market.servicemarket.usage_analysis_repository.UsageAnalysisRepository;
@@ -95,7 +96,8 @@ public class UsageAnalysisInterceptor implements HandlerInterceptor {
     public  void saveInceptorInfo(){
 
         UsageAnalysisEntity usage = new UsageAnalysisEntity();
-        usage.setId(21L);
+        int id = ++ServicemarketApplication.usageEntityIdSquence;
+        usage.setId(id);
         usage.setIp(ip_1);
         usage.setMethod(method_type);
         usage.setOperation(actionName);
