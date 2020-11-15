@@ -1,7 +1,7 @@
 package com.market.servicemarket.service;
 
-import com.market.servicemarket.entity.InceptorInfo;
 import com.market.servicemarket.interceptor.UsageAnalysisInterceptor;
+import com.market.servicemarket.usage_analysis_entity.UsageAnalysisEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class InceptorService {
 
-    String actionName="";
+   /* String actionName="";
     String id= "";
     String url="";
     String ip_1;
@@ -26,7 +26,7 @@ public class InceptorService {
 
     @Scheduled(fixedRate = 10000)  //After every 10 seconds hit the repository
     public void add2DBJob() {
-        List<InceptorInfo> inceptor_data = customInterceptor.sendInceptorData();
+        List<UsageAnalysisEntity> inceptor_data = customInterceptor.sendInceptorData();
         System.out.println(inceptor_data.size());
         if(inceptor_data.size()==0) System.out.println("No data found in Inceptor");
 
@@ -57,7 +57,7 @@ public class InceptorService {
         inceptorInfo.setIp_two(ip_2);
        // inceptorRepository.save(inceptorInfo);
 
-    }
+    }*/
 
 }
 

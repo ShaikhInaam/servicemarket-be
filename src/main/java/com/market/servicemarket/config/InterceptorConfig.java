@@ -1,5 +1,6 @@
-package com.market.servicemarket.interceptor;
+package com.market.servicemarket.config;
 
+import com.market.servicemarket.interceptor.UsageAnalysisInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

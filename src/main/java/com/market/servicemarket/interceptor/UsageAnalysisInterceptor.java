@@ -2,8 +2,9 @@ package com.market.servicemarket.interceptor;
 
 
 
-import com.market.servicemarket.entity.InceptorInfo;
 import com.market.servicemarket.service.InceptorService;
+import com.market.servicemarket.usage_analysis_entity.UsageAnalysisEntity;
+import com.market.servicemarket.usage_analysis_repository.UsageAnalysisRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,10 @@ import java.util.List;
 @Component
 public class UsageAnalysisInterceptor implements HandlerInterceptor {
 
-    @Autowired(required = true)
-    InceptorService inceptorService;
+    @Autowired
+    UsageAnalysisRepository usageAnalysisRepository;
 
-   // @Autowired
-    //InceptorRepository inceptorRepository;
+
     private static Logger log = LoggerFactory.getLogger(UsageAnalysisInterceptor.class);
     String actionName="";
     String id= "";
@@ -35,7 +35,7 @@ public class UsageAnalysisInterceptor implements HandlerInterceptor {
     String ip_1;
     String ip_2;
     String method_type="";
-    List<InceptorInfo> inceptorlist = new ArrayList<>();
+    List<UsageAnalysisEntity> usagelist = new ArrayList<>();
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
@@ -72,29 +72,8 @@ public class UsageAnalysisInterceptor implements HandlerInterceptor {
             // controllerName  = handlerMethod.getBeanType().getSimpleName().replace("Controller", "");
             actionName = handlerMethod.getMethod().getName();
         }
-/*        //log.info("Name: "+actionName);
-        HttpServletRequest requests = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-
-        		int contentLength =request.getContentLength();
-        if(method.equalsIgnoreCase("post") || method.equalsIgnoreCase("put")) {
-            String contentType = request.getContentType();
-            if(contentType != null && !contentType.equalsIgnoreCase("application/json")) {
-                flag = false;
-            }
-			else if(contentLength <= 2) {
-				flag = false;
-			}
-        }
-        if(!flag) {
-            response.sendRedirect("/rest/books/invalid");
-        }
-        return flag;
-
-        return HandlerInterceptor.super.preHandle(request, response, handler);
-
-  */
         saveInceptorInfo();
-        sendInceptorData();
+
         return  true;
     }
 
@@ -115,34 +94,16 @@ public class UsageAnalysisInterceptor implements HandlerInterceptor {
 
     public  void saveInceptorInfo(){
 
-        InceptorInfo inceptorInfo = new InceptorInfo();
-        inceptorInfo.setId(0);
-        inceptorInfo.setMethodName(actionName);
-        inceptorInfo.setMethodType(method_type);
-        inceptorInfo.setUrl(url);
-        inceptorInfo.setIp_one(ip_1);
-        inceptorInfo.setIp_two(ip_2);
-        inceptorlist.add(inceptorInfo);
-        //inceptorRepository.save(inceptorInfo);
+        UsageAnalysisEntity usage = new UsageAnalysisEntity();
+        usage.setId(21L);
+        usage.setIp(ip_1);
+        usage.setMethod(method_type);
+        usage.setOperation(actionName);
+        usage.setUrl(url);
+        usageAnalysisRepository.save(usage);
 
 
     }
-
-    public List<InceptorInfo> sendInceptorData() {
-
-        /*  List<Customer> customerList = customerRepositry.findByCustomername(name);
-          System.out.println("sizeoflist: "+inceptorlist.size());
-        for(InceptorInfo inceptors : inceptorlist){
-            System.out.println(inceptors.getMethodName());
-            System.out.println(inceptors.getMethodType());
-            System.out.println(inceptors.getIp_one());
-            System.out.println(inceptors.getUrl());
-            System.out.println(inceptors.getIp_two());
-        }*/
-        return inceptorlist;
-    }
-
-
 
 
 }
