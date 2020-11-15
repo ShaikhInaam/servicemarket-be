@@ -23,7 +23,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         BaseResponse response = new BaseResponse();
         response.setResponseCode(Constants.INVALID_FIELD_RESPONSE_CODE);
         response.setResponseMessage(Constants.INVALID_FIELD_RESPONSE_MESSAGE);
-
+        ex.printStackTrace();
         return ResponseEntity.ok(response);
     }
     @Override
@@ -31,7 +31,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         BaseResponse response = new BaseResponse();
         response.setResponseCode(Constants.INVALID_FIELD_RESPONSE_CODE);
         response.setResponseMessage(Constants.INVALID_FIELD_RESPONSE_MESSAGE);
-
+        ex.printStackTrace();
         return ResponseEntity.ok(response);
     }
 
@@ -41,6 +41,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         response.setResponseCode(Constants.FAILUARE_RESPNSE_CODE);
         response.setResponseMessage(Constants.FAILUARE_RESPONSE_MESSAGE);
         ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.OK);
+        exception.printStackTrace();
         return entity;
     }
 
@@ -51,6 +52,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         response.setResponseCode(Constants.FAILUARE_RESPNSE_CODE);
         response.setResponseMessage(Constants.FAILUARE_RESPONSE_MESSAGE);
         ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.OK);
+        exception.printStackTrace();
         return entity;
     }
 }

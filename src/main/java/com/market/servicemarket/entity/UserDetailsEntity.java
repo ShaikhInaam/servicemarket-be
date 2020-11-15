@@ -2,6 +2,7 @@ package com.market.servicemarket.entity;
 
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -23,10 +24,13 @@ public class UserDetailsEntity implements Serializable {
 
     private String username;
 
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
+    @Column(name = "nic_number")
     private String nicNumber;
 
+    @Column(name = "nic_expiry_date")
     private Date nicExpiryDate;
 
     private String latitude;
@@ -37,10 +41,12 @@ public class UserDetailsEntity implements Serializable {
 
     private String country;
 
+    @Column(name = "last_login")
     private Timestamp lastLogin;
 
     private String email;
 
+    @Column(name = "created_date")
     private Date createdDate;
 
 
