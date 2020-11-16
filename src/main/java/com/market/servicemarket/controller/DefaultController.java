@@ -7,17 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class DefaultController {
 
 
-    @GetMapping("/greetings")
+    @GetMapping("/")
     String greetings() {
         return "Greetings! Service Market pakistan";
     }
 
-
-    @GetMapping("/error")
-    void throwError() {
-
-        throw new RuntimeException();
-
-    }
 
 }
