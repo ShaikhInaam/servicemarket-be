@@ -54,7 +54,7 @@ public class LoginBusinessImpl implements LoginBusiness, SecurityConstants {
                 loginResponse.setName(userEntity.getName());
 
                 UserToken userToken = UserToken.builder().token(token)
-                        .validity("2 Hours").build();
+                        .validity("15 Minutes").build();
                 loginResponse.setUserToken(userToken);
 
 
