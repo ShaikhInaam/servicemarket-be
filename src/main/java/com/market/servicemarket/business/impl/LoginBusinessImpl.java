@@ -1,5 +1,7 @@
 package com.market.servicemarket.business.impl;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.market.servicemarket.business.base.LoginBusiness;
 import com.market.servicemarket.dto.UserDetails;
 import com.market.servicemarket.dto.UserToken;
@@ -8,20 +10,32 @@ import com.market.servicemarket.entity.UserEntity;
 import com.market.servicemarket.request.LoginRequest;
 import com.market.servicemarket.response.BaseResponse;
 import com.market.servicemarket.response.LoginResponse;
+import com.market.servicemarket.security.JwtUserDetailsService;
 import com.market.servicemarket.service.base.LoginService;
-import com.market.servicemarket.util.CommanUtil;
-import com.market.servicemarket.util.Constants;
-import com.market.servicemarket.util.HashUtil;
-import com.market.servicemarket.util.UserConstants;
+import com.market.servicemarket.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 
 @Service
-public class LoginBusinessImpl implements LoginBusiness {
+public class LoginBusinessImpl implements LoginBusiness, SecurityConstants {
 
     @Autowired
     LoginService loginService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
+    @Autowired
+    private JwtUserDetailsService userDetailsService;
+
 
     @Override
     public BaseResponse authenticateUser(LoginRequest request)throws Exception{
@@ -31,12 +45,16 @@ public class LoginBusinessImpl implements LoginBusiness {
 
             if(UserConstants.ACTIVE.equals(userEntity.getStatus())){
 
+                final org.springframework.security.core.userdetails.UserDetails springUserDetails = userDetailsService
+                        .loadUserByUsername(userEntity.getUsername());
+
+                final String token = jwtTokenUtil.generateToken(springUserDetails);
 
                 LoginResponse loginResponse = new LoginResponse();
                 loginResponse.setName(userEntity.getName());
 
-                UserToken userToken = UserToken.builder().token(System.currentTimeMillis()+userEntity.getUsername())
-                        .validity("2 Hours").build();
+                UserToken userToken = UserToken.builder().token(token)
+                        .validity("15 Minutes").build();
                 loginResponse.setUserToken(userToken);
 
 
