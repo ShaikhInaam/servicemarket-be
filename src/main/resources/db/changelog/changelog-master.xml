@@ -14,5 +14,6 @@
     <include file="/db/changelog/changes/alter-user-details-table-changelog.xml"/>
     <include file="/db/changelog/changes/dummy-user-details-insertion.xml"/>
     <include file="/db/changelog/changes/create-constants-table-changelog.xml"/>
+    <include file="/db/changelog/changes/create-transactions-logger-be-table-changelog.xml"/>
 
 </databaseChangeLog>
