@@ -11,4 +11,6 @@ public class LoginRequest extends BaseRequest {
     private String username;
     @NotBlank
     private String password;
+
+
 }
