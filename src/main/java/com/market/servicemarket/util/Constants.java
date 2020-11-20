@@ -3,6 +3,8 @@ package com.market.servicemarket.util;
 
 public class Constants {
 
+    // 00100 series
+
     public static String SUCCESS_RESPONSE_CODE = "00100";
     public static String SUCCESS_RESPONSE_MESSAGE = "SUCCESS";
 
@@ -17,5 +19,17 @@ public class Constants {
 
     public static String INVALID_FIELD_RESPONSE_CODE = "00500";
     public static String INVALID_FIELD_RESPONSE_MESSAGE = "Required field are missing";
+
+
+    // 000100 series
+
+    public static String GET_REQUEST_RESPONSE_CODE = "000100";
+    public static String GET_REQUEST_RESPONSE_MESSAGE = "GET";
+
+    public static String POST_REQUEST_RESPONSE_CODE = "000200";
+    public static String POST_REQUEST_RESPONSE_MESSAGE = "POST";
+
+
+
 
 }
