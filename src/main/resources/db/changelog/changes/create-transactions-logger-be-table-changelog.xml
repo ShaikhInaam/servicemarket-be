@@ -5,15 +5,17 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet author="Inaam" id="1">
+    <changeSet author="Inaam" id="6">
 
         <sql>
 
 
-            CREATE TABLE users
-            ( username VARCHAR(200) NOT NULL , name VARCHAR(200) NOT NULL , user_pass VARCHAR(5000) NOT NULL ,
-            status VARCHAR(200) NOT NULL );
-            
+            CREATE SEQUENCE transaction_logger_be_seq;
+
+            CREATE TABLE transaction_logger_be (id INT NOT NULL DEFAULT NEXTVAL ('transaction_logger_be_seq') ,
+            transaction_id VARCHAR(200) NOT NULL, request_json text NOT NULL,
+            response_json text NOT NULL, method VARCHAR(200) NOT NULL, time TIMESTAMP(0) NOT NULL, PRIMARY KEY (id));
+
 
         </sql>
 
