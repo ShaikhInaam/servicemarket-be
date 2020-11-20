@@ -5,8 +5,13 @@ import com.market.servicemarket.usage_analysis_repository.UsageAnalysisRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.BufferingClientHttpRequestFactory;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.util.Collections;
 import java.util.List;
 
 @SpringBootApplication
@@ -29,4 +34,20 @@ public class ServicemarketApplication {
             System.err.println("Usage Entity Sequence = "+usageEntityIdSquence);
         }
     }
+
+
+    @Bean(name = "appRestClient")
+    public RestTemplate getRestClient() {
+        RestTemplate restClient = new RestTemplate(
+                new BufferingClientHttpRequestFactory(new SimpleClientHttpRequestFactory()));
+
+        // Add one interceptor like in your example, except using anonymous class.
+        restClient.setInterceptors(Collections.singletonList((request, body, execution) -> {
+
+            return execution.execute(request, body);
+        }));
+
+        return restClient;
+    }
+
 }
