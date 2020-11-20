@@ -51,7 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Secu
         // We don't need CSRF for this example
         httpSecurity.csrf().disable()
                 // dont authenticate this particular request
-                .authorizeRequests().antMatchers(SIGN_UP_URL).permitAll().
+                .authorizeRequests().antMatchers(SIGN_UP_URL,"/swagger-ui.html", "/v3/api-docs",
+                "/swagger-ui/*").permitAll().
                 // all other requests need to be authenticated
                         anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to

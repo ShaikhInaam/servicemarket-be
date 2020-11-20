@@ -7,6 +7,7 @@ import com.market.servicemarket.response.BaseResponse;
 import com.market.servicemarket.service.base.LoginService;
 import com.market.servicemarket.util.Constants;
 import com.market.servicemarket.util.HashUtil;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "contact", description = "the Contact API")
 public class LoginController {
 
     @Autowired

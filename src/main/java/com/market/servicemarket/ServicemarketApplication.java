@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
 
 import javax.annotation.PostConstruct;
 import java.util.Collections;
@@ -48,6 +51,11 @@ public class ServicemarketApplication {
         }));
 
         return restClient;
+    }
+
+    @Bean
+    public InternalResourceViewResolver defaultViewResolver() {
+        return new InternalResourceViewResolver();
     }
 
 }
