@@ -36,6 +36,9 @@ public class LoginBusinessImpl implements LoginBusiness, SecurityConstants {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
+    @Autowired
+    ConfigurationUtil configurationUtil;
+
 
     @Override
     public BaseResponse authenticateUser(LoginRequest request)throws Exception{
@@ -71,28 +74,28 @@ public class LoginBusinessImpl implements LoginBusiness, SecurityConstants {
 
 
                 BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
-                        .responseMessage(Constants.SUCCESS_RESPONSE_MESSAGE).response(loginResponse).build();
+                        .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).response(loginResponse).build();
 
                 return baseResponse;
 
             }else if(UserConstants.SUSPENDED.equals(userEntity.getStatus())){
 
                 BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.USER_SUSPENDED_RESPONSE_CODE)
-                        .responseMessage(Constants.USER_SUSPENDED_RESPONSE_MESSAGE).build();
+                        .responseMessage(configurationUtil.getMessage(Constants.USER_SUSPENDED_RESPONSE_CODE)).build();
 
                 return baseResponse;
 
             }else if(UserConstants.DELETE.equals(userEntity.getStatus())){
 
                 BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.AUTHENTICATION_FAIL_RESPONSE_CODE)
-                        .responseMessage(Constants.AUTHENTICATION_FAIL_RESPONSE_MESSAGE).build();
+                        .responseMessage(configurationUtil.getMessage(Constants.AUTHENTICATION_FAIL_RESPONSE_CODE)).build();
 
                 return baseResponse;
 
             }else{
 
                 BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.AUTHENTICATION_FAIL_RESPONSE_CODE)
-                        .responseMessage(Constants.AUTHENTICATION_FAIL_RESPONSE_MESSAGE).build();
+                        .responseMessage(configurationUtil.getMessage(Constants.AUTHENTICATION_FAIL_RESPONSE_CODE)).build();
 
                 return baseResponse;
             }
@@ -101,7 +104,7 @@ public class LoginBusinessImpl implements LoginBusiness, SecurityConstants {
         }else{
 
             BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.AUTHENTICATION_FAIL_RESPONSE_CODE)
-                    .responseMessage(Constants.AUTHENTICATION_FAIL_RESPONSE_MESSAGE).build();
+                    .responseMessage(configurationUtil.getMessage(Constants.AUTHENTICATION_FAIL_RESPONSE_CODE)).build();
 
             return baseResponse;
 

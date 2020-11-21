@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.market.servicemarket.dto.WeatherJsonResponse;
 import com.market.servicemarket.request.BaseRequest;
+import com.market.servicemarket.util.ConfigurationUtil;
 import com.market.servicemarket.util.Constants;
 import com.market.servicemarket.util.RestServiceUtility;
 import com.market.servicemarket.util.TransactionLoggerBEService;
@@ -25,6 +26,9 @@ public class DefaultController {
 
     @Autowired
     TransactionLoggerBEService transactionLoggerBEService;
+
+    @Autowired
+    ConfigurationUtil configurationUtil;
 
 
     @GetMapping("/")
@@ -48,7 +52,7 @@ public class DefaultController {
             String st = "Timezone : "+weatherResponse.getTimezone() +" \nLatitude : "+weatherResponse.getLat()+" \nLongitude : "+weatherResponse.getLon();
 
             transactionLoggerBEService.log(request.getTransactionId(), "https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=hourly,daily&appid=3ed14bbc7011ef0cb338d3a022f7145f",
-                    null, response, Constants.GET_REQUEST_RESPONSE_MESSAGE);
+                    null, response, configurationUtil.getMessage(Constants.GET_REQUEST_RESPONSE_CODE));
 
             return st;
         }
