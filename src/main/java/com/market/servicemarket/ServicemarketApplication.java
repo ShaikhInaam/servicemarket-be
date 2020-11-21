@@ -39,7 +39,7 @@ public class ServicemarketApplication {
             System.err.println("Usage Entity Sequence = "+usageEntityIdSquence);
         }
 
-        //config.updateConstants();
+        configurationUtil.updateConstants();
     }
 
 

@@ -36,6 +36,7 @@ public class ConfigurationUtil {
 
     public void updateConstants(){
 
+        System.out.println("Updating Constants");
         constants = configService.updateConstants();
     }
 
