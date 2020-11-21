@@ -5,13 +5,13 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet author="Inaam" id="6">
+    <changeSet author="Inaam" id="7">
 
         <sql>
 
-<!--            CREATE SEQUENCE constants_seq;-->
+           CREATE SEQUENCE constants_seq;
 
-            CREATE TABLE constants ( CODE VARCHAR(5) NOT NULL , MESSAGE VARCHAR(500) NOT NULL , id INT NOT NULL DEFAULT NEXTVAL ('constants_seq') , PRIMARY KEY (id)) ;
+            CREATE TABLE configuration ( code VARCHAR(500) NOT NULL , message_english VARCHAR(50000) NOT NULL , id INT NOT NULL DEFAULT NEXTVAL ('constants_seq') , PRIMARY KEY (id)) ;
 
         </sql>
 

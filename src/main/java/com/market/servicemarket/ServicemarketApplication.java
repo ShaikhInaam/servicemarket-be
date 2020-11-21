@@ -1,8 +1,9 @@
 package com.market.servicemarket;
 
-import com.market.servicemarket.service.base.ResponseConstantsService;
+import com.market.servicemarket.service.base.ConfigurationService;
 import com.market.servicemarket.usage_analysis_entity.UsageAnalysisEntity;
 import com.market.servicemarket.usage_analysis_repository.UsageAnalysisRepository;
+import com.market.servicemarket.util.ConfigurationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +14,6 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 import java.util.Collections;
-import java.util.List;
 
 @SpringBootApplication
 public class ServicemarketApplication {
@@ -24,7 +24,8 @@ public class ServicemarketApplication {
     UsageAnalysisRepository usageAnalysisRepository;
 
     @Autowired
-    ResponseConstantsService constantsService;
+    ConfigurationUtil configurationUtil;
+
 
     public static void main(String[] args) {
         SpringApplication.run(ServicemarketApplication.class, args);
@@ -38,7 +39,7 @@ public class ServicemarketApplication {
             System.err.println("Usage Entity Sequence = "+usageEntityIdSquence);
         }
 
-        constantsService.updateConstants();
+        //config.updateConstants();
     }
 
 
