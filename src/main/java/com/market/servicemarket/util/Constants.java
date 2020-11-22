@@ -3,6 +3,8 @@ package com.market.servicemarket.util;
 
 public class Constants {
 
+
+
     // 00100 series
 
     public static String SUCCESS_RESPONSE_CODE = "00100";
