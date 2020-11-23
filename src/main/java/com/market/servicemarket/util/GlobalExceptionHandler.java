@@ -1,6 +1,7 @@
 package com.market.servicemarket.util;
 
 import com.market.servicemarket.response.BaseResponse;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -35,13 +36,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         BaseResponse response = new BaseResponse();
         response.setResponseCode(Constants.INVALID_FIELD_RESPONSE_CODE);
         response.setResponseMessage(configurationUtil.getMessage(Constants.INVALID_FIELD_RESPONSE_CODE));
-        ex.printStackTrace();
         ex.printStackTrace(new PrintWriter(errors));
         errors.toString();
         try {
             mailUtil.sendMailToAdmin(emails,errors);
         } catch (MessagingException e) {
-            System.out.println("Unable to send exception on mail");
+            RetryEmailSending(e,emails,errors);
         }
         return ResponseEntity.ok(response);
     }
@@ -51,17 +51,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         BaseResponse response = new BaseResponse();
         response.setResponseCode(Constants.INVALID_FIELD_RESPONSE_CODE);
         response.setResponseMessage(configurationUtil.getMessage(Constants.INVALID_FIELD_RESPONSE_CODE));
-        ex.printStackTrace();
         ex.printStackTrace(new PrintWriter(errors));
         errors.toString();
         try {
             mailUtil.sendMailToAdmin(emails,errors);
         } catch (MessagingException e) {
-            System.out.println("Unable to send exception on mail");
+            RetryEmailSending(e,emails,errors);
         }
 
         return ResponseEntity.ok(response);
     }
+
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Object> handleRuntimeExceptions(RuntimeException exception, WebRequest webRequest) {
@@ -70,13 +70,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         response.setResponseCode(Constants.FAILUARE_RESPNSE_CODE);
         response.setResponseMessage(configurationUtil.getMessage(Constants.FAILUARE_RESPNSE_CODE));
         ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.OK);
-        exception.printStackTrace();
+
         exception.printStackTrace(new PrintWriter(errors));
         errors.toString();
         try {
             mailUtil.sendMailToAdmin(emails,errors);
         } catch (MessagingException e) {
-            System.out.println("Unable to send exception on mail");
+            RetryEmailSending(e,emails,errors);
         }
         return entity;
     }
@@ -89,14 +89,25 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         response.setResponseCode(Constants.FAILUARE_RESPNSE_CODE);
         response.setResponseMessage(configurationUtil.getMessage(Constants.FAILUARE_RESPNSE_CODE));
         ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.OK);
-        exception.printStackTrace();
         exception.printStackTrace(new PrintWriter(errors));
         errors.toString();
         try {
             mailUtil.sendMailToAdmin(emails,errors);
         } catch (MessagingException e) {
-            System.out.println("Unable to send exception on mail");
+            RetryEmailSending(e,emails,errors);
         }
         return entity;
     }
+
+    @SneakyThrows
+    private void RetryEmailSending(MessagingException e, String emails, StringWriter errors) {
+        StringWriter whole_error = new StringWriter();
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);
+        sw.append((CharSequence) errors);
+        whole_error = sw ;
+        mailUtil.sendMailToAdmin(emails,whole_error);
+    }
+
 }
