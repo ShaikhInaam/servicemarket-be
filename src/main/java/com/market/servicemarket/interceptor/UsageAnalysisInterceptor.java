@@ -3,7 +3,6 @@ package com.market.servicemarket.interceptor;
 
 
 import com.market.servicemarket.ServicemarketApplication;
-import com.market.servicemarket.service.InceptorService;
 import com.market.servicemarket.usage_analysis_entity.UsageAnalysisEntity;
 import com.market.servicemarket.usage_analysis_repository.UsageAnalysisRepository;
 import org.slf4j.Logger;
@@ -24,8 +23,6 @@ import java.util.List;
 @Component
 public class UsageAnalysisInterceptor implements HandlerInterceptor {
 
-    @Autowired
-    UsageAnalysisRepository usageAnalysisRepository;
 
 
     private static Logger log = LoggerFactory.getLogger(UsageAnalysisInterceptor.class);
@@ -51,7 +48,6 @@ public class UsageAnalysisInterceptor implements HandlerInterceptor {
                     .getHost());
 
             // Print the IP address
-           // System.out.println("Public IP Address of: " + ip);
             ip_2 = ip.toString();
         }catch (MalformedURLException e) {
             // It means the URL is invalid
@@ -66,6 +62,7 @@ public class UsageAnalysisInterceptor implements HandlerInterceptor {
             // controllerName  = handlerMethod.getBeanType().getSimpleName().replace("Controller", "");
             actionName = handlerMethod.getMethod().getName();
         }
+        ip_1 = ip_1 +"  /  "+ ip_2;
         saveInceptorInfo();
 
         return  true;
@@ -76,17 +73,22 @@ public class UsageAnalysisInterceptor implements HandlerInterceptor {
 
     public  void saveInceptorInfo(){
 
-        UsageAnalysisEntity usage = new UsageAnalysisEntity();
+        UsageAnalysisEntity analysisEntity = new UsageAnalysisEntity();
         int id = ++ServicemarketApplication.usageEntityIdSquence;
-        usage.setId(id);
-        usage.setIp(ip_1);
-        usage.setMethod(method_type);
-        usage.setOperation(actionName);
-        usage.setUrl(url);
-        usageAnalysisRepository.save(usage);
+        analysisEntity.setId(id);
+        analysisEntity.setMethod(actionName);
+        analysisEntity.setOperation(method_type);
+        analysisEntity.setUrl(url);
+        analysisEntity.setIp(ip_1);
+        usagelist.add(analysisEntity);
 
 
+    }
+    public List<UsageAnalysisEntity> sendInceptorData() {
+
+        return usagelist;
     }
 
 
 }
+
