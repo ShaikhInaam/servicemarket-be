@@ -1,7 +1,7 @@
 package com.market.servicemarket.util;
 
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -11,25 +11,34 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Service
 public class JavaMailUtil {
+
 
     @Autowired
     ConfigurationUtil configurationUtil;
 
-    public  static void sendMailToAdmin(String recipient, StringWriter errors) throws MessagingException {
+    public  void sendMailToAdmin(StringWriter errors) throws MessagingException {
+        String recipient = configurationUtil.getMessage(Constants.ADMIN_EMAILS);
         Properties prop = new Properties();
         prop.put("mail.smtp.auth","true");
         prop.put("mail.smtp.starttls.enable","true");
         prop.put("mail.smtp.host","smtp.gmail.com");
         prop.put("mail.smtp.port","587");
 
-        /************** Please put email and password ************************************/
-        /************** Your email security should be configured as: (1) Allow less securing app to access turned on (2) Turn off 2FA ************************************/
+        String myAccountEmail = configurationUtil.getMessage(Constants.EMAIL_ACCOUNT_USERNAME_CODE); //service market email
+        String password= EncryptDecryptUtil.decrypt(configurationUtil.getMessage(Constants.EMAIL_ACCOUNT_PASSWORD_CODE));    //service market email password
 
-        String myAccountEmail = ""; //service market email
-        String password="";    //service market email password
+        String[] admin_emails;
 
-        String[] admin_emails = recipient.split(",");
+        if(recipient.contains(",")){
+            admin_emails = recipient.split(",");
+        }else{
+            admin_emails = new String[1];
+            admin_emails[0] = recipient;
+        }
+
+
 
         Session session = Session.getInstance(prop, new Authenticator() {
 
@@ -41,11 +50,11 @@ public class JavaMailUtil {
         Message message= prepareMessage(session,myAccountEmail,admin_emails,errors);
 
         Transport.send(message);
-        System.out.println("Message send Successfully");
+
 
     }
 
-    private static Message prepareMessage(Session session, String myAccountEmail, String[] recipient, StringWriter errors) {
+    private Message prepareMessage(Session session, String myAccountEmail, String[] recipient, StringWriter errors) {
     try {
         for(int i = 0 ; i<recipient.length; i++) {
             Message message = new MimeMessage(session);

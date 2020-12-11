@@ -19,6 +19,8 @@
             Insert into configuration (code, message_english) values ('000100', 'GET');
             Insert into configuration (code, message_english) values ('000200', 'POST');
             Insert into configuration (code, message_english) values ('01000', 'shaikhinaam2@gmail.com,servicemarketpakistan@gmail.com');
+            Insert into configuration (code, message_english) values ('02000', 'servicemarketpakistan@gmail.com');
+            Insert into configuration (code, message_english) values ('03000', 'pdunhwsdnlvwdq');
 
         </sql>
 

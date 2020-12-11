@@ -23,6 +23,8 @@ public class Constants {
     // 01000 series
 
     public static String ADMIN_EMAILS = "01000";
+    public static String EMAIL_ACCOUNT_USERNAME_CODE = "02000";
+    public static String EMAIL_ACCOUNT_PASSWORD_CODE = "03000";
 
 
 

@@ -21,42 +21,39 @@ import java.io.StringWriter;
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-
-    private JavaMailUtil mailUtil;
+    @Autowired
+    JavaMailUtil mailUtil;
 
     @Autowired
     ConfigurationUtil configurationUtil;
 
-    String emails = "";
     StringWriter errors = new StringWriter();
 
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        emails = configurationUtil.getMessage(Constants.ADMIN_EMAILS);
         BaseResponse response = new BaseResponse();
         response.setResponseCode(Constants.INVALID_FIELD_RESPONSE_CODE);
         response.setResponseMessage(configurationUtil.getMessage(Constants.INVALID_FIELD_RESPONSE_CODE));
         ex.printStackTrace(new PrintWriter(errors));
         errors.toString();
         try {
-            mailUtil.sendMailToAdmin(emails,errors);
+            mailUtil.sendMailToAdmin(errors);
         } catch (MessagingException e) {
-            RetryEmailSending(e,emails,errors);
+            RetryEmailSending(e,errors);
         }
         return ResponseEntity.ok(response);
     }
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        emails = configurationUtil.getMessage(Constants.ADMIN_EMAILS);
         BaseResponse response = new BaseResponse();
         response.setResponseCode(Constants.INVALID_FIELD_RESPONSE_CODE);
         response.setResponseMessage(configurationUtil.getMessage(Constants.INVALID_FIELD_RESPONSE_CODE));
         ex.printStackTrace(new PrintWriter(errors));
         errors.toString();
         try {
-            mailUtil.sendMailToAdmin(emails,errors);
+            mailUtil.sendMailToAdmin(errors);
         } catch (MessagingException e) {
-            RetryEmailSending(e,emails,errors);
+            RetryEmailSending(e,errors);
         }
 
         return ResponseEntity.ok(response);
@@ -65,7 +62,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Object> handleRuntimeExceptions(RuntimeException exception, WebRequest webRequest) {
-        emails = configurationUtil.getMessage(Constants.ADMIN_EMAILS);
         BaseResponse response = new BaseResponse();
         response.setResponseCode(Constants.FAILUARE_RESPNSE_CODE);
         response.setResponseMessage(configurationUtil.getMessage(Constants.FAILUARE_RESPNSE_CODE));
@@ -74,9 +70,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         exception.printStackTrace(new PrintWriter(errors));
         errors.toString();
         try {
-            mailUtil.sendMailToAdmin(emails,errors);
+            mailUtil.sendMailToAdmin(errors);
         } catch (MessagingException e) {
-            RetryEmailSending(e,emails,errors);
+            RetryEmailSending(e,errors);
         }
         return entity;
     }
@@ -84,7 +80,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleExceptions(Exception exception, WebRequest webRequest) {
-        emails = configurationUtil.getMessage(Constants.ADMIN_EMAILS);
         BaseResponse response = new BaseResponse();
         response.setResponseCode(Constants.FAILUARE_RESPNSE_CODE);
         response.setResponseMessage(configurationUtil.getMessage(Constants.FAILUARE_RESPNSE_CODE));
@@ -92,22 +87,22 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         exception.printStackTrace(new PrintWriter(errors));
         errors.toString();
         try {
-            mailUtil.sendMailToAdmin(emails,errors);
+            mailUtil.sendMailToAdmin(errors);
         } catch (MessagingException e) {
-            RetryEmailSending(e,emails,errors);
+            RetryEmailSending(e,errors);
         }
         return entity;
     }
 
     @SneakyThrows
-    private void RetryEmailSending(MessagingException e, String emails, StringWriter errors) {
+    private void RetryEmailSending(MessagingException e, StringWriter errors) {
         StringWriter whole_error = new StringWriter();
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         e.printStackTrace(pw);
         sw.append((CharSequence) errors);
         whole_error = sw ;
-        mailUtil.sendMailToAdmin(emails,whole_error);
+        mailUtil.sendMailToAdmin(whole_error);
     }
 
 }
