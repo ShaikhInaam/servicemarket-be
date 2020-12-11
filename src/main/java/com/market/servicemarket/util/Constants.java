@@ -3,6 +3,8 @@ package com.market.servicemarket.util;
 
 public class Constants {
 
+
+
     // 00100 series
 
     public static String SUCCESS_RESPONSE_CODE = "00100";
@@ -24,6 +26,8 @@ public class Constants {
     public static String JOBS_PORTAL_SECRET = "02000";
     public static String JOBS_PORTAL_BASE_URL = "03000";
     public static String JOBS_PORTAL_JOB_SHIFT_API = "04000";
+    public static String EMAIL_ACCOUNT_USERNAME_CODE = "02000";
+    public static String EMAIL_ACCOUNT_PASSWORD_CODE = "03000";
 
 
 

@@ -23,6 +23,8 @@
             Insert into configuration (code, message_english) values ('03000', 'https://service-market-jobs-portal.herokuapp.com/');
             Insert into configuration (code, message_english) values ('04000', 'portal/job-shift');
 
+            Insert into configuration (code, message_english) values ('02000', 'servicemarketpakistan@gmail.com');
+            Insert into configuration (code, message_english) values ('03000', 'pdunhwsdnlvwdq');
 
         </sql>
 
