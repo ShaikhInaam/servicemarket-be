@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.market.servicemarket.business.base.JobBusiness;
 import com.market.servicemarket.dto.JobShiftJsonRequest;
 import com.market.servicemarket.dto.JobShiftJsonResponse;
-import com.market.servicemarket.dto.WeatherJsonResponse;
 import com.market.servicemarket.request.BaseRequest;
 import com.market.servicemarket.response.BaseResponse;
 import com.market.servicemarket.util.ConfigurationUtil;
