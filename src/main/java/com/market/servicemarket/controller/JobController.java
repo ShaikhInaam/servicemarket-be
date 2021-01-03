@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/portal")
+@RequestMapping("/portal/job")
 public class JobController {
 
     @Autowired

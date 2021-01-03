@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Inaam" id="10">
+
+        <sql>
+
+
+            CREATE SEQUENCE submenu_table_seq;
+
+            CREATE TABLE sub_menu (id INT NOT NULL DEFAULT NEXTVAL ('submenu_table_seq') ,
+            menu_id INT NOT NULL,
+            value text NOT NULL,
+            PRIMARY KEY (id));
+
+
+            insert into sub_menu (menu_id, value) values (1, '[{"name":"a","isActive":"true","level":1,"nextLevel":[{"name":"aa","isActive":true,"level":2,"nextLevel":[{"name":"aaa","isActive":true,"level":3},{"name":"aab","isActive":true,"level":3}]},{"name":"ab","isActive":true,"level":2,"nextLevel":[{"name":"aba","isActive":true,"level":3},{"name":"abb","isActive":true,"level":3,"nextLevel":[{"name":"abc","isActive":true,"level":4}]}]}]}]');
+            insert into sub_menu (menu_id, value) values (2, '[{"name":"a","isActive":"true","level":1,"nextLevel":[{"name":"aa","isActive":true,"level":2,"nextLevel":[{"name":"aaa","isActive":true,"level":3},{"name":"aab","isActive":true,"level":3}]},{"name":"ab","isActive":true,"level":2,"nextLevel":[{"name":"aba","isActive":true,"level":3},{"name":"abb","isActive":true,"level":3,"nextLevel":[{"name":"abc","isActive":true,"level":4}]}]}]}]');
+
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>
