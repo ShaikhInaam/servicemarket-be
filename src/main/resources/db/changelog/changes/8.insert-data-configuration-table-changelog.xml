@@ -21,10 +21,10 @@
             Insert into configuration (code, message_english) values ('01000', 'shaikhinaam2@gmail.com,servicemarketpakistan@gmail.com');
             Insert into configuration (code, message_english) values ('02000', 'am9ic1BvcnRhbFVzZXI6am9ic1BvcnRhbFBhc3N3b3Jk');
             Insert into configuration (code, message_english) values ('03000', 'https://service-market-jobs-portal.herokuapp.com/');
-            Insert into configuration (code, message_english) values ('04000', 'portal/job-shift');
+            Insert into configuration (code, message_english) values ('04000', 'job/job-shift');
 
-            Insert into configuration (code, message_english) values ('02000', 'servicemarketpakistan@gmail.com');
-            Insert into configuration (code, message_english) values ('03000', 'pdunhwsdnlvwdq');
+            Insert into configuration (code, message_english) values ('05000', 'servicemarketpakistan@gmail.com');
+            Insert into configuration (code, message_english) values ('06000', 'pdunhwSdnlvwdq');
 
         </sql>
 

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.market.servicemarket.business.base.JobBusiness;
 import com.market.servicemarket.dto.JobShiftJsonRequest;
-import com.market.servicemarket.dto.JobShiftJsonResponse;
+import com.market.servicemarket.dto.SmpGenericApiCallJsonResponse;
 import com.market.servicemarket.request.BaseRequest;
 import com.market.servicemarket.response.BaseResponse;
 import com.market.servicemarket.util.ConfigurationUtil;
@@ -42,14 +42,15 @@ public class JobBusinessImpl implements JobBusiness {
         JobShiftJsonRequest jsonRequest = new JobShiftJsonRequest();
         jsonRequest.setTransactionId(request.getTransactionId());
 
-        LinkedHashMap response = (LinkedHashMap) utility.callPostJson(configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_SHIFT_API), header, jsonRequest, JobShiftJsonResponse.class);
+        LinkedHashMap response = (LinkedHashMap) utility.callPostJson(configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_SHIFT_API), header, jsonRequest, SmpGenericApiCallJsonResponse.class);
+        System.out.println(configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_SHIFT_API));
         //transactionLoggerBEService.log(jsonRequest.getTransactionId(), configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_SHIFT_API),
           //      jsonRequest, response, configurationUtil.getMessage(Constants.POST_REQUEST_RESPONSE_CODE+" Jobs Portal Job Shift"));
 
-        JobShiftJsonResponse jsonResponse = null;
+        SmpGenericApiCallJsonResponse jsonResponse = null;
         if(response !=null){
 
-            jsonResponse = mapper.convertValue(response, new TypeReference<JobShiftJsonResponse>(){});
+            jsonResponse = mapper.convertValue(response, new TypeReference<SmpGenericApiCallJsonResponse>(){});
             if(jsonResponse.getResponseCode().equals(Constants.SUCCESS_RESPONSE_CODE) &&
                     jsonResponse.getResponseMessage().equalsIgnoreCase(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE))){
 

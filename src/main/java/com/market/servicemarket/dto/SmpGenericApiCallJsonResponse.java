@@ -5,9 +5,9 @@ import lombok.Data;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
-public class JobShiftJsonResponse {
+public class SmpGenericApiCallJsonResponse {
 
-    private String[] response;
+    private Object response;
 
     private String responseMessage;
 

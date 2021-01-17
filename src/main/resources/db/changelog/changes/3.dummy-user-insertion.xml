@@ -13,6 +13,9 @@
             INSERT INTO users(username, name, user_pass, status) VALUES ('inaam','Inaam Ishaque Shaikh',
             'ACAC320B6D15328ACAEBAF71B4931B02','active');
 
+            INSERT INTO users(username, name, user_pass, status) VALUES ('talha','Talha Shan',
+            'ACAC320B6D15328ACAEBAF71B4931B02','active');
+
             INSERT INTO users(username, name, user_pass, status) VALUES ('azher','Azhar Bhatti',
             'ACAC320B6D15328ACAEBAF71B4931B02','suspended');
 

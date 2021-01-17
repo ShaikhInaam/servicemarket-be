@@ -26,8 +26,8 @@ public class Constants {
     public static String JOBS_PORTAL_SECRET = "02000";
     public static String JOBS_PORTAL_BASE_URL = "03000";
     public static String JOBS_PORTAL_JOB_SHIFT_API = "04000";
-    public static String EMAIL_ACCOUNT_USERNAME_CODE = "02000";
-    public static String EMAIL_ACCOUNT_PASSWORD_CODE = "03000";
+    public static String EMAIL_ACCOUNT_USERNAME_CODE = "05000";
+    public static String EMAIL_ACCOUNT_PASSWORD_CODE = "06000";
 
 
 
