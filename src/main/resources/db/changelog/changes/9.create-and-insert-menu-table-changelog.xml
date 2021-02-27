@@ -17,8 +17,7 @@
             PRIMARY KEY (id));
 
 
-            insert into menu (name, is_active) values ('A', 'true');
-            insert into menu (name, is_active) values ('B', 'true');
+            insert into menu (name, is_active) values ('jobs portal', 'true');
 
 
         </sql>
