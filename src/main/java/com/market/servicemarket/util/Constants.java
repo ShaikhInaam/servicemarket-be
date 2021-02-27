@@ -10,7 +10,7 @@ public class Constants {
     public static String SUCCESS_RESPONSE_CODE = "00100";
     public static String AUTHENTICATION_FAIL_RESPONSE_CODE = "00300";
     public static String USER_SUSPENDED_RESPONSE_CODE = "00400";
-    public static String FAILUARE_RESPNSE_CODE = "00200";
+    public static String FAILURE_RESPONSE_CODE = "00200";
     public static String INVALID_FIELD_RESPONSE_CODE = "00500";
 
 

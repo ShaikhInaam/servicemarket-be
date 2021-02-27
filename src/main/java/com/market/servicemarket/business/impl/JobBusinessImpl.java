@@ -49,9 +49,11 @@ public class JobBusinessImpl implements JobBusiness {
         JobShiftJsonRequest jsonRequest = new JobShiftJsonRequest();
         jsonRequest.setTransactionId(request.getTransactionId());
 
-        LinkedHashMap response = (LinkedHashMap) utility.callPostJson(configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_SHIFT_API), header, jsonRequest, SmpGenericApiCallJsonResponse.class);
-        //transactionLoggerBEService.log(jsonRequest.getTransactionId(), configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_SHIFT_API),
-          //      jsonRequest, response, configurationUtil.getMessage(Constants.POST_REQUEST_RESPONSE_CODE+" Jobs Portal Job Shift"));
+        String url = configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_SHIFT_API);
+
+        LinkedHashMap response = (LinkedHashMap) utility.callPostJson(url, header, jsonRequest, SmpGenericApiCallJsonResponse.class);
+        transactionLoggerBEService.log(jsonRequest.getTransactionId(), url,
+                jsonRequest, response, configurationUtil.getMessage(Constants.POST_REQUEST_RESPONSE_CODE));
 
         SmpGenericApiCallJsonResponse jsonResponse = null;
         if(response !=null){
@@ -85,10 +87,11 @@ public class JobBusinessImpl implements JobBusiness {
 
         JobShiftJsonRequest jsonRequest = new JobShiftJsonRequest();
         jsonRequest.setTransactionId(request.getTransactionId());
+        String url = configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_TYPE_API);
 
-        LinkedHashMap response = (LinkedHashMap) utility.callPostJson(configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_TYPE_API), header, jsonRequest, SmpGenericApiCallJsonResponse.class);
-        //transactionLoggerBEService.log(jsonRequest.getTransactionId(), configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_SHIFT_API),
-        //      jsonRequest, response, configurationUtil.getMessage(Constants.POST_REQUEST_RESPONSE_CODE+" Jobs Portal Job Shift"));
+        LinkedHashMap response = (LinkedHashMap) utility.callPostJson(url, header, jsonRequest, SmpGenericApiCallJsonResponse.class);
+        transactionLoggerBEService.log(jsonRequest.getTransactionId(), url,
+              jsonRequest, response, configurationUtil.getMessage(Constants.POST_REQUEST_RESPONSE_CODE));
 
         SmpGenericApiCallJsonResponse jsonResponse = null;
         if(response !=null){

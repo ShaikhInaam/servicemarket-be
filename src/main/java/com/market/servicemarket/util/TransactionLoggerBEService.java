@@ -14,7 +14,7 @@ public class TransactionLoggerBEService {
     @Autowired
     TransactionLoggerBeRepository repository;
 
-    public void log(String trxId, String url, Object request, Object response, String method)throws Exception{
+    public void log(String trxId, String url, Object request, Object response, String method){
 
 
         try{
@@ -32,7 +32,7 @@ public class TransactionLoggerBEService {
 
             TransactionLoggerBeEntity entity = TransactionLoggerBeEntity.builder()
                     .requestJson(requestStr).responseJson(responseStr).transactionId(trxId)
-                    .time(new Timestamp(System.currentTimeMillis())).method(method).build();
+                    .time(new Timestamp(System.currentTimeMillis())).method(method).url(url).build();
 
             repository.save(entity);
 

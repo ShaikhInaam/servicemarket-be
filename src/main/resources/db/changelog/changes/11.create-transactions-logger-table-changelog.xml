@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Inaam" id="11">
+
+        <sql>
+
+
+            CREATE SEQUENCE transaction_logger_seq;
+
+            CREATE TABLE transaction_logger (id INT NOT NULL DEFAULT NEXTVAL ('transaction_logger_seq') ,
+            transaction_id VARCHAR(200) NOT NULL, request_json text NOT NULL, url VARCHAR(500) NOT NULL,
+            response_json text NOT NULL, method VARCHAR(200) NOT NULL, time TIMESTAMP(0) NOT NULL, PRIMARY KEY (id));
+
+
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>

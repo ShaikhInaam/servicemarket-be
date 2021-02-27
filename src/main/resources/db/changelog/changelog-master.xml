@@ -18,6 +18,7 @@
     <include file="/db/changelog/changes/8.insert-data-configuration-table-changelog.xml"/>
     <include file="/db/changelog/changes/9.create-and-insert-menu-table-changelog.xml"/>
     <include file="/db/changelog/changes/10.create-and-insert-submenu-table-changelog.xml"/>
+    <include file="/db/changelog/changes/11.create-transactions-logger-table-changelog.xml"/>
 
 
 
