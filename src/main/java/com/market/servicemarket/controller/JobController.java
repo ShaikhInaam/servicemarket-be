@@ -21,11 +21,19 @@ public class JobController {
 
 
     @PostMapping("/job-shift")
-    public ResponseEntity<BaseResponse> login(@Valid @RequestBody BaseRequest request)throws Exception{
-
+    public ResponseEntity<BaseResponse> jobShift(@Valid @RequestBody BaseRequest request)throws Exception{
 
 
         BaseResponse responseObject = jobBusiness.getJobShift(request);
+        return ResponseEntity.ok(responseObject);
+
+    }
+
+    @PostMapping("/job-type")
+    public ResponseEntity<BaseResponse> jobType(@Valid @RequestBody BaseRequest request)throws Exception{
+
+
+        BaseResponse responseObject = jobBusiness.getJobType(request);
         return ResponseEntity.ok(responseObject);
 
     }

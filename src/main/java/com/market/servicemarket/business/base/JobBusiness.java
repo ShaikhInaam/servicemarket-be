@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface JobBusiness {
 
-    BaseResponse getJobShift(BaseRequest request)throws Exception;
+    BaseResponse getJobShift(BaseRequest request);
+    BaseResponse getJobType(BaseRequest request);
 
 }
