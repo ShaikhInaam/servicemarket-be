@@ -18,7 +18,7 @@
             PRIMARY KEY (id));
 
 
-            insert into sub_menu (menu_id, value) values (1, '[{"menu":"create company profile","menuURL":"menu url","icon":"icon url","isActive":"false","level":1},{"menu":"new jobs","menuURL":"menu url","icon":"icon url","isActive":"true","level":1},{"menu":"applied jobs","menuURL":"menu url","icon":"icon url","isActive":"false","level":1},{"menu":"posted jobs","menuURL":"menu url","icon":"icon url","isActive":"false","level":1}]');
+            insert into sub_menu (menu_id, value) values (1, '{"responseCode":"00100","responseMessage":"SUCCESS","response":[{"menu":"jobs portal","isActive":"true","subMenu":[{"menu":"new jobs","menuURL":"\/jobPortal\/jobs","icon":"icon url","isActive":"true","level":1},{"menu":"create company profile","menuURL":"menu url","icon":"icon url","isActive":"false","level":1},{"menu":"applied jobs","menuURL":"menu url","icon":"icon url","isActive":"false","level":1},{"menu":"posted jobs","menuURL":"menu url","icon":"icon url","isActive":"false","level":1}]}]}');
 
 
         </sql>
