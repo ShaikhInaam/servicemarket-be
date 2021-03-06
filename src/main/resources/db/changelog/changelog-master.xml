@@ -11,7 +11,6 @@
     <include file="/db/changelog/changes/1.create-user-table-changelog.xml"/>
     <include file="/db/changelog/changes/2.create-user-details-table-changelog.xml"/>
     <include file="/db/changelog/changes/3.dummy-user-insertion.xml"/>
-    <include file="/db/changelog/changes/4.alter-user-details-table-changelog.xml"/>
     <include file="/db/changelog/changes/5.dummy-user-details-insertion.xml"/>
     <include file="/db/changelog/changes/7.create-constants-table-changelog.xml"/>
     <include file="/db/changelog/changes/6.create-transactions-logger-be-table-changelog.xml"/>

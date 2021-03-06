@@ -33,17 +33,4 @@ public class LoginServiceImpl implements LoginService {
         return null;
     }
 
-
-    @Override
-    public UserDetailsEntity getUserDetails(String username){
-
-        UserDetailsEntity userDetailsEntity = null;
-        userDetailsEntity  = userDetailsRepository.findByUsername(username);
-        if(CommanUtil.isNotNull(userDetailsEntity)){
-            return userDetailsEntity;
-        }
-
-        return null;
-    }
-
 }

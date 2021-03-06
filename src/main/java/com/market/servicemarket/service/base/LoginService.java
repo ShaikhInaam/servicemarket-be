@@ -8,5 +8,4 @@ import org.springframework.stereotype.Service;
 public interface LoginService {
 
     UserEntity getUser(String username, String password);
-    UserDetailsEntity getUserDetails(String username);
 }

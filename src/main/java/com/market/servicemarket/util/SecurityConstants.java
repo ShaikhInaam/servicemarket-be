@@ -7,5 +7,5 @@ public interface SecurityConstants {
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER_STRING = "Authorization";
     public static final String SIGN_UP_URL = "/auth/login";
-    public static final String REGISTRATION_URL = "/auth/register";
+    public static final String REGISTRATION_URL = "/user/register";
 }

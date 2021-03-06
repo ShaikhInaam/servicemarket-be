@@ -15,6 +15,9 @@ import java.io.Serializable;
 public class UserEntity implements Serializable {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
+
     private String username;
 
     private String name;
@@ -23,6 +26,9 @@ public class UserEntity implements Serializable {
     private String userPass;
 
     private String status;
+
+    @OneToOne(mappedBy = "userEntity")
+    private UserDetailsEntity userDetailsEntity;
 
 
 }

@@ -9,10 +9,11 @@
 
         <sql>
 
+            CREATE SEQUENCE user_seq;
 
             CREATE TABLE users
             ( username VARCHAR(200) NOT NULL , name VARCHAR(200) NOT NULL , user_pass VARCHAR(5000) NOT NULL ,
-            status VARCHAR(200) NOT NULL );
+            status VARCHAR(200) NOT NULL, id INT NOT NULL DEFAULT NEXTVAL ('user_seq') , PRIMARY KEY (id));
             
 
         </sql>

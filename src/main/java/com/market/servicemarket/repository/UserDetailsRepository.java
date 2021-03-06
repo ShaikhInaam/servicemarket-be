@@ -8,9 +8,10 @@ import org.springframework.stereotype.Repository;
 public interface UserDetailsRepository extends JpaRepository<UserDetailsEntity, Integer> {
 
 
-    UserDetailsEntity findByUsername(String username);
-
     UserDetailsEntity findByEmail(String email);
     UserDetailsEntity findByNicNumber(String nicNumber);
+    UserDetailsEntity findTopByNicNumber(String nicNumber);
+
+    UserDetailsEntity findTopByEmail(String email);
 
 }

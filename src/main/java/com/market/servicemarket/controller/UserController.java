@@ -1,8 +1,7 @@
 package com.market.servicemarket.controller;
 
-import com.market.servicemarket.business.base.RegistrationBusiness;
-import com.market.servicemarket.request.LoginRequest;
-import com.market.servicemarket.request.RegistrationUser;
+import com.market.servicemarket.business.base.UserBusiness;
+import com.market.servicemarket.request.RegisterUser;
 import com.market.servicemarket.response.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/auth")
-public class RegistrationController {
+@RequestMapping("/user")
+public class UserController {
  @Autowired
- RegistrationBusiness registrationBusiness;
+ UserBusiness userBusiness;
     @PostMapping("/register")
-    public ResponseEntity<BaseResponse> register(@Valid @RequestBody RegistrationUser request)throws Exception{
+    public ResponseEntity<BaseResponse> register(@Valid @RequestBody RegisterUser request)throws Exception{
 
-
-        BaseResponse responseObject = registrationBusiness.registerUser(request);
-
+        BaseResponse responseObject = userBusiness.registerUser(request);
         return ResponseEntity.ok(responseObject);
     }
 }

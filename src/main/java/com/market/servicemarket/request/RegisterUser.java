@@ -12,14 +12,11 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 @Getter @Setter
-public class RegistrationUser extends BaseRequest{
+public class RegisterUser extends BaseRequest{
     @NotBlank
     private String username;
     @NotBlank
     private String password;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
     private Date dateOfBirth;
 
@@ -30,12 +27,10 @@ public class RegistrationUser extends BaseRequest{
     private String city;
 
     private String country;
-//    @NotBlank
-    private Timestamp lastLogin;
+
     @NotBlank
     private String email;
 
-    private String status;
     @NotBlank
     private String name;
 

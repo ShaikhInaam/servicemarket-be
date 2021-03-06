@@ -61,7 +61,7 @@ public class LoginBusinessImpl implements LoginBusiness, SecurityConstants {
                 loginResponse.setUserToken(userToken);
 
 
-                UserDetailsEntity userDetailsEntity = loginService.getUserDetails(userEntity.getUsername());
+                UserDetailsEntity userDetailsEntity = userEntity.getUserDetailsEntity();//loginService.getUserDetails(userEntity.getUsername());
                 if(CommanUtil.isNotNull(userDetailsEntity)){
 
                     UserDetails userDetails = UserDetails.builder().city(userDetailsEntity.getCity()).country(userDetailsEntity.getCountry())
