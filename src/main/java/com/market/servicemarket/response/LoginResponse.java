@@ -1,5 +1,6 @@
 package com.market.servicemarket.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.market.servicemarket.dto.UserDetails;
 import com.market.servicemarket.dto.UserToken;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class LoginResponse{
 
 

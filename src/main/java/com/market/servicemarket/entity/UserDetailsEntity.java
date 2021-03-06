@@ -1,11 +1,9 @@
 package com.market.servicemarket.entity;
 
 import lombok.*;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -20,9 +18,11 @@ import java.sql.Timestamp;
 public class UserDetailsEntity implements Serializable {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
-    private String username;
+    @Column(name = "user_id")
+    private Integer userId;
 
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
@@ -49,5 +49,12 @@ public class UserDetailsEntity implements Serializable {
     @Column(name = "created_date")
     private Date createdDate;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "user_id",
+            referencedColumnName = "id",
+            updatable = false,
+            insertable = false)
+    private UserEntity userEntity;
 
 }

@@ -100,7 +100,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         e.printStackTrace(pw);
-        sw.append((CharSequence) errors);
+        sw.append(errors.toString());
         whole_error = sw ;
         mailUtil.sendMailToAdmin(whole_error);
     }
