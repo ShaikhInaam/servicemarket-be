@@ -18,8 +18,8 @@
             PRIMARY KEY (id));
 
 
-            insert into sub_menu (menu_id, value) values (1, '[{"name":"a","isActive":"true","level":1,"nextLevel":[{"name":"aa","isActive":true,"level":2,"nextLevel":[{"name":"aaa","isActive":true,"level":3},{"name":"aab","isActive":true,"level":3}]},{"name":"ab","isActive":true,"level":2,"nextLevel":[{"name":"aba","isActive":true,"level":3},{"name":"abb","isActive":true,"level":3,"nextLevel":[{"name":"abc","isActive":true,"level":4}]}]}]}]');
-            insert into sub_menu (menu_id, value) values (2, '[{"name":"a","isActive":"true","level":1,"nextLevel":[{"name":"aa","isActive":true,"level":2,"nextLevel":[{"name":"aaa","isActive":true,"level":3},{"name":"aab","isActive":true,"level":3}]},{"name":"ab","isActive":true,"level":2,"nextLevel":[{"name":"aba","isActive":true,"level":3},{"name":"abb","isActive":true,"level":3,"nextLevel":[{"name":"abc","isActive":true,"level":4}]}]}]}]');
+            insert into sub_menu (menu_id, value) values (1, '[{"menu":"new jobs","menuURL":"\/jobPortal\/jobs","icon":"icon url","isActive":"true","level":1},{"menu":"create company profile","menuURL":"menu url","icon":"icon url","isActive":"false","level":1},{"menu":"applied jobs","menuURL":"menu url","icon":"icon url","isActive":"false","level":1},{"menu":"posted jobs","menuURL":"menu url","icon":"icon url","isActive":"false","level":1}]');
+
 
         </sql>
 

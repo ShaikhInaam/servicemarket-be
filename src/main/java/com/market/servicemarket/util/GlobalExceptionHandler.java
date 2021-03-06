@@ -63,8 +63,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Object> handleRuntimeExceptions(RuntimeException exception, WebRequest webRequest) {
         BaseResponse response = new BaseResponse();
-        response.setResponseCode(Constants.FAILUARE_RESPNSE_CODE);
-        response.setResponseMessage(configurationUtil.getMessage(Constants.FAILUARE_RESPNSE_CODE));
+        response.setResponseCode(Constants.FAILURE_RESPONSE_CODE);
+        response.setResponseMessage(configurationUtil.getMessage(Constants.FAILURE_RESPONSE_CODE));
         ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.OK);
 
         exception.printStackTrace(new PrintWriter(errors));
@@ -81,8 +81,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleExceptions(Exception exception, WebRequest webRequest) {
         BaseResponse response = new BaseResponse();
-        response.setResponseCode(Constants.FAILUARE_RESPNSE_CODE);
-        response.setResponseMessage(configurationUtil.getMessage(Constants.FAILUARE_RESPNSE_CODE));
+        response.setResponseCode(Constants.FAILURE_RESPONSE_CODE);
+        response.setResponseMessage(configurationUtil.getMessage(Constants.FAILURE_RESPONSE_CODE));
         ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.OK);
         exception.printStackTrace(new PrintWriter(errors));
         errors.toString();

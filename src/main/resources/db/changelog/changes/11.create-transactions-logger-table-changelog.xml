@@ -5,19 +5,16 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet author="Inaam" id="9">
+    <changeSet author="Inaam" id="11">
 
         <sql>
 
 
-            CREATE SEQUENCE menu_table_seq;
+            CREATE SEQUENCE transaction_logger_seq;
 
-            CREATE TABLE menu (id INT NOT NULL DEFAULT NEXTVAL ('menu_table_seq') ,
-            name VARCHAR(200) NOT NULL, is_active text NOT NULL,
-            PRIMARY KEY (id));
-
-
-            insert into menu (name, is_active) values ('jobs portal', 'true');
+            CREATE TABLE transaction_logger (id INT NOT NULL DEFAULT NEXTVAL ('transaction_logger_seq') ,
+            transaction_id VARCHAR(200) NOT NULL, request_json text NOT NULL, url VARCHAR(500) NOT NULL,
+            response_json text NOT NULL, method VARCHAR(200) NOT NULL, time TIMESTAMP(0) NOT NULL, PRIMARY KEY (id));
 
 
         </sql>

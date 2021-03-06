@@ -13,7 +13,7 @@
             CREATE SEQUENCE transaction_logger_be_seq;
 
             CREATE TABLE transaction_logger_be (id INT NOT NULL DEFAULT NEXTVAL ('transaction_logger_be_seq') ,
-            transaction_id VARCHAR(200) NOT NULL, request_json text NOT NULL,
+            transaction_id VARCHAR(200) NOT NULL, request_json text NOT NULL, url VARCHAR(500) NOT NULL,
             response_json text NOT NULL, method VARCHAR(200) NOT NULL, time TIMESTAMP(0) NOT NULL, PRIMARY KEY (id));
 
 

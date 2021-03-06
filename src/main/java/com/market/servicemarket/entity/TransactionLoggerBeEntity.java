@@ -32,4 +32,6 @@ public class TransactionLoggerBeEntity implements Serializable {
 
     private String method;
 
+    private String url;
+
 }
