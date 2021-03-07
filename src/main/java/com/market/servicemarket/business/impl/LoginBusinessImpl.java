@@ -18,6 +18,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -76,7 +77,20 @@ public class LoginBusinessImpl implements LoginBusiness, SecurityConstants {
                 BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
                         .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).response(loginResponse).build();
 
+                //updating last login time
+                //on successful login
+                if(baseResponse.getResponseCode().equals("000")){
+
+                   // UserDetailsEntity userDetailsEntity = new UserDetailsEntity();
+                    int idOfUserDetails = userDetailsEntity.getId();
+                    Timestamp lastlogintime = new Timestamp(System.currentTimeMillis());
+                    loginService.updateLastLoginTime(idOfUserDetails,lastlogintime);
+
+                }
+
                 return baseResponse;
+
+
 
             }else if(UserConstants.SUSPENDED.equals(userEntity.getStatus())){
 

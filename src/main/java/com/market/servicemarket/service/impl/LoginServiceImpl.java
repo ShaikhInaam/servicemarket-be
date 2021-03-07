@@ -1,6 +1,5 @@
 package com.market.servicemarket.service.impl;
 
-import com.market.servicemarket.entity.UserDetailsEntity;
 import com.market.servicemarket.entity.UserEntity;
 
 import com.market.servicemarket.repository.UserDetailsRepository;
@@ -9,6 +8,8 @@ import com.market.servicemarket.service.base.LoginService;
 import com.market.servicemarket.util.CommanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
 
 
 @Service
@@ -31,6 +32,13 @@ public class LoginServiceImpl implements LoginService {
         }
 
         return null;
+    }
+
+    //method to update last login timestamp
+    @Override
+    public void updateLastLoginTime(int id, Timestamp lastlogin) {
+
+        userRepository.updateLastLoginTime(id,lastlogin);
     }
 
 }
