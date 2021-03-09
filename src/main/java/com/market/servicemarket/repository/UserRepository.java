@@ -23,9 +23,4 @@ public interface UserRepository extends JpaRepository<UserEntity, String> {
                                               @Param("nicNumber") String nicNumber);
 
 
-    //query to update last login time
-    @Modifying
-    @Query("UPDATE UserDetailsEntity useDetails SET useDetails.lastLogin = :lastLogin WHERE useDetails.id = :id")
-    void updateLastLoginTime(@Param("id") int id, @Param("lastLogin") Timestamp lastLogin);
-
 }

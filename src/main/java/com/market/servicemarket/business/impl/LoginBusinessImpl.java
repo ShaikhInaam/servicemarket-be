@@ -79,12 +79,13 @@ public class LoginBusinessImpl implements LoginBusiness, SecurityConstants {
 
                 //updating last login time
                 //on successful login
-                if(baseResponse.getResponseCode().equals("000")){
+                if(baseResponse.getResponseCode().equals("00100")){
 
                    // UserDetailsEntity userDetailsEntity = new UserDetailsEntity();
-                    int idOfUserDetails = userDetailsEntity.getId();
+                  //  int idOfUserDetails = userDetailsEntity.getId();
+                    int idOfUser = userEntity.getId();
                     Timestamp lastlogintime = new Timestamp(System.currentTimeMillis());
-                    loginService.updateLastLoginTime(idOfUserDetails,lastlogintime);
+                    loginService.updateLastLoginTime(idOfUser,lastlogintime);
 
                 }
 

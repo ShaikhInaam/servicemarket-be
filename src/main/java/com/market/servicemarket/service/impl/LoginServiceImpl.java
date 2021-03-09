@@ -38,7 +38,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public void updateLastLoginTime(int id, Timestamp lastlogin) {
 
-        userRepository.updateLastLoginTime(id,lastlogin);
+        userDetailsRepository.updateLastLoginTime(id,lastlogin);
     }
 
 }
