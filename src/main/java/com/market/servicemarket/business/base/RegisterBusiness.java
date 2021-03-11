@@ -5,6 +5,7 @@ import com.market.servicemarket.response.BaseResponse;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface UserBusiness {
-    BaseResponse registerUser(RegisterUser registerUser)throws Exception ;
+public interface RegisterBusiness {
+
+    BaseResponse registerUser(RegisterUser request)throws Exception;
 }
