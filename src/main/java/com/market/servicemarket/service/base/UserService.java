@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
 
-    UserDetailsEntity getUserByEmail(String email);
-    UserDetailsEntity getUserByNic(String nic);
-    UserDetailsEntity getUserOneByEmail(String email);
     void saveUserDetail(UserDetailsEntity userDetailsEntity);
     void saveUser(UserEntity userEntity);
     Boolean isUserAvailableByNameOrNicOrEmail(String username, String email, String nicNumber);
+    UserEntity getUser(String username, String password);
 }

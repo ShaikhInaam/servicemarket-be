@@ -18,32 +18,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
-    UserDetailsEntity userDetailsEntity=null;
-
-
-    @Override
-    public UserDetailsEntity getUserByEmail(String email) {
-
-        userDetailsEntity= userDetailsRepository.findTopByEmail(email);
-        if(CommanUtil.isNotNull(userDetailsEntity)){
-            return userDetailsEntity;
-        }
-        return null;
-    }
-
-    @Override
-    public UserDetailsEntity getUserByNic(String nic) {
-        userDetailsEntity= userDetailsRepository.findTopByNicNumber(nic);
-        if(CommanUtil.isNotNull(userDetailsEntity)){
-            return userDetailsEntity;
-        }
-        return null;
-    }
-
-    @Override
-    public UserDetailsEntity getUserOneByEmail(String email) {
-        return null;
-    }
 
     @Override
     public void saveUserDetail(UserDetailsEntity userDetailsEntity) {
@@ -60,6 +34,18 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.isUserAvailableByNameOrNicOrEmail(username, email, nicNumber);
 
+    }
+
+    @Override
+    public UserEntity getUser(String username, String password){
+
+        UserEntity userEntity = null;
+        userEntity = userRepository.findByUsernameAndUserPass(username, password);
+        if(CommanUtil.isNotNull(userEntity)){
+            return userEntity;
+        }
+
+        return null;
     }
 
 }
