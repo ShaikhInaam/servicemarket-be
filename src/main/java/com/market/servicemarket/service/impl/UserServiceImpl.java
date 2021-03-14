@@ -9,6 +9,8 @@ import com.market.servicemarket.util.CommanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -19,6 +21,8 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     UserDetailsEntity userDetailsEntity=null;
+
+    UserEntity userEntity = null;
 
 
     @Override
@@ -59,6 +63,27 @@ public class UserServiceImpl implements UserService {
     public Boolean isUserAvailableByNameOrNicOrEmail(String username, String email, String nicNumber){
 
         return userRepository.isUserAvailableByNameOrNicOrEmail(username, email, nicNumber);
+
+    }
+
+    //update user information
+    @Override
+    public UserEntity findByUserName(String username) {
+
+        userEntity = userRepository.findByUsername(username);
+
+        if(CommanUtil.isNotNull(userEntity)){
+            return userEntity;
+        }
+
+        return null;
+    }
+
+    //update user details information
+    @Override
+    public boolean updateUserDetailsInformation(String email, String nicNumber, String username) {
+
+        return userDetailsRepository.updateUserDetailsInformation(email, nicNumber,username);
 
     }
 
