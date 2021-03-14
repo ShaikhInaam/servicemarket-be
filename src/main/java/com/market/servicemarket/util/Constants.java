@@ -34,4 +34,8 @@ public class Constants {
     public static String JOBS_PORTAL_JOB_SHIFT_API = "JP003";
     public static String JOBS_PORTAL_JOB_TYPE_API = "JP004";
 
+    // User Status
+
+    public static String USER_STATUS_DEFAULT = "Active";
+
 }

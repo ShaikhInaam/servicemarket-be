@@ -11,7 +11,6 @@ public interface UserDetailsRepository extends JpaRepository<UserDetailsEntity, 
     UserDetailsEntity findByEmail(String email);
     UserDetailsEntity findByNicNumber(String nicNumber);
     UserDetailsEntity findTopByNicNumber(String nicNumber);
-
     UserDetailsEntity findTopByEmail(String email);
 
 }
