@@ -36,47 +36,27 @@ public class RegisterBusinessImpl implements RegisterBusiness {
         }
         else {
 
-            UserEntity userEntity = new UserEntity();
-            UserDetailsEntity userDetailsEntity = new UserDetailsEntity();
-
-            userEntity.setUsername(request.getUsername());
-            userEntity.setName(request.getName());
-            userEntity.setUserPass(request.getPassword());
-            userEntity.setStatus(Constants.USER_STATUS_DEFAULT);
+            UserEntity userEntity = UserEntity.builder().username(request.getUsername()).name(request.getName())
+                    .userPass(request.getPassword()).status(Constants.USER_STATUS_DEFAULT).build();
 
             userEntity = registerService.saveUser(userEntity);
 
-            if(userEntity != null) {
 
-                userDetailsEntity.setDateOfBirth(request.getDateOfBirth());
-                userDetailsEntity.setNicNumber(request.getNicNumber());
-                userDetailsEntity.setNicExpiryDate(request.getNicExpiryDate());
-                userDetailsEntity.setLatitude(request.getLatitude());
-                userDetailsEntity.setLongitude(request.getLongitude());
-                userDetailsEntity.setCity(request.getCity());
-                userDetailsEntity.setCountry(request.getCountry());
-                userDetailsEntity.setEmail(request.getEmail());
+            long millis=System.currentTimeMillis();
+            Date date = new Date(millis);
 
-                long millis=System.currentTimeMillis();
-                Date date = new Date(millis);
-                userDetailsEntity.setCreatedDate(date);
-                userDetailsEntity.setUserId(userEntity.getId());
-                userDetailsEntity.setUserEntity(userEntity);
+            UserDetailsEntity userDetailsEntity = UserDetailsEntity.builder().dateOfBirth(request.getDateOfBirth()).nicNumber(request.getNicNumber())
+                    .nicExpiryDate(request.getNicExpiryDate()).latitude(request.getLatitude()).longitude(request.getLongitude())
+                    .city(request.getCity()).country(request.getCountry()).email(request.getEmail()).createdDate(date).userId(userEntity.getId())
+                    .userEntity(userEntity).build();
 
-                userDetailsEntity = registerService.saveUserDetails(userDetailsEntity);
+            userDetailsEntity = registerService.saveUserDetails(userDetailsEntity);
 
-                if(userDetailsEntity != null) {
-                    BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
-                            .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).build();
+            if(userDetailsEntity != null) {
+                BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
+                        .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).build();
 
-                    return baseResponse;
-                }
-                else {
-                    BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.FAILURE_RESPONSE_CODE)
-                            .responseMessage(configurationUtil.getMessage(Constants.FAILURE_RESPONSE_CODE)).build();
-
-                    return baseResponse;
-                }
+                return baseResponse;
             }
             else {
                 BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.FAILURE_RESPONSE_CODE)
@@ -84,6 +64,7 @@ public class RegisterBusinessImpl implements RegisterBusiness {
 
                 return baseResponse;
             }
+
         }
     }
 }
