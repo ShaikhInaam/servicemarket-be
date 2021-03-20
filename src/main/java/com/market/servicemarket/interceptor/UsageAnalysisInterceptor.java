@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class UsageAnalysisInterceptor implements HandlerInterceptor {
                     .getHost());
 
             // Print the IP address
-           // System.out.println("Public IP Address of: " + ip);
+            // System.out.println("Public IP Address of: " + ip);
             ip_2 = ip.toString();
         }catch (MalformedURLException e) {
             // It means the URL is invalid
@@ -76,14 +77,12 @@ public class UsageAnalysisInterceptor implements HandlerInterceptor {
 
     public  void saveInceptorInfo(){
 
-        UsageAnalysisEntity usage = new UsageAnalysisEntity();
         int id = ++ServicemarketApplication.usageEntityIdSquence;
-        usage.setId(id);
-        usage.setIp(ip_1);
-        usage.setMethod(method_type);
-        usage.setOperation(actionName);
-        usage.setUrl(url);
-        usageAnalysisRepository.save(usage);
+
+        UsageAnalysisEntity usageAnalysisEntity = UsageAnalysisEntity.builder().id(id).ip(ip_1).method(method_type)
+                .operation(actionName).url(url).timestamp(new Timestamp(System.currentTimeMillis())).build();
+
+        usageAnalysisRepository.save(usageAnalysisEntity);
 
 
     }
