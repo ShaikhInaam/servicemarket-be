@@ -2,6 +2,7 @@ package com.market.servicemarket.controller;
 
 import com.market.servicemarket.business.base.JobBusiness;
 import com.market.servicemarket.request.BaseRequest;
+import com.market.servicemarket.request.JobPostRequest;
 import com.market.servicemarket.response.BaseResponse;
 import com.market.servicemarket.util.ConfigurationUtil;
 import com.market.servicemarket.util.Constants;
@@ -47,6 +48,18 @@ public class JobController {
 
         BaseResponse responseObject = jobBusiness.getJobType(request);
         transactionLoggerService.log(request.getTransactionId(), "/portal/job/job-type",
+                request, responseObject, configurationUtil.getMessage(Constants.POST_REQUEST_RESPONSE_CODE));
+
+        return ResponseEntity.ok(responseObject);
+
+    }
+
+    @PostMapping("/job-post")
+    public ResponseEntity<BaseResponse> jobPost(@Valid @RequestBody JobPostRequest request)throws Exception{
+
+
+        BaseResponse responseObject = jobBusiness.jobPost(request);
+        transactionLoggerService.log(request.getTransactionId(), "/portal/job/job-post",
                 request, responseObject, configurationUtil.getMessage(Constants.POST_REQUEST_RESPONSE_CODE));
 
         return ResponseEntity.ok(responseObject);
