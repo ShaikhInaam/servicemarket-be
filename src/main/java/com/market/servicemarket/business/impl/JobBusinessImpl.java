@@ -6,6 +6,7 @@ import com.market.servicemarket.business.base.JobBusiness;
 import com.market.servicemarket.dto.JobShiftJsonRequest;
 import com.market.servicemarket.dto.SmpGenericApiCallJsonResponse;
 import com.market.servicemarket.request.BaseRequest;
+import com.market.servicemarket.request.GetJobsRequest;
 import com.market.servicemarket.response.BaseResponse;
 import com.market.servicemarket.util.ConfigurationUtil;
 import com.market.servicemarket.util.Constants;
@@ -16,6 +17,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 @Service
 public class JobBusinessImpl implements JobBusiness {
@@ -114,6 +116,48 @@ public class JobBusinessImpl implements JobBusiness {
 
     }
 
+    @Override
+    public BaseResponse getJobs(GetJobsRequest request) {
+
+        ObjectMapper mapper = new ObjectMapper();
+        HttpHeaders header = creatHeaders();
+
+        String url = configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_GET_JOBS_API);
+
+        LinkedHashMap response = (LinkedHashMap) utility.callPostJson(url, header, request, SmpGenericApiCallJsonResponse.class);
+        transactionLoggerBEService.log(request.getTransactionId(), url,
+                request, response, configurationUtil.getMessage(Constants.POST_REQUEST_RESPONSE_CODE));
+
+        SmpGenericApiCallJsonResponse jsonResponse = null;
+        if(Objects.nonNull(response)){
+
+            jsonResponse = mapper.convertValue(response, new TypeReference<SmpGenericApiCallJsonResponse>(){});
+            if(jsonResponse.getResponseCode().equals(Constants.SUCCESS_RESPONSE_CODE) &&
+                    jsonResponse.getResponseMessage().equalsIgnoreCase(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE))){
+
+                BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
+                        .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).response(jsonResponse.getResponse()).build();
+
+                return baseResponse;
+            }
+            else {
+
+                BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.FAILURE_RESPONSE_CODE)
+                        .responseMessage(configurationUtil.getMessage(Constants.FAILURE_RESPONSE_CODE)).response(jsonResponse.getResponse()).build();
+
+                return baseResponse;
+            }
+
+        }
+        else {
+
+            BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.FAILURE_RESPONSE_CODE)
+                    .responseMessage(configurationUtil.getMessage(Constants.FAILURE_RESPONSE_CODE)).response(jsonResponse.getResponse()).build();
+
+            return baseResponse;
+        }
+
+    }
 
 
 }
