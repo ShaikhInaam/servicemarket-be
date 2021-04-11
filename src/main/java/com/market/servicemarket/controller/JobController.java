@@ -2,6 +2,7 @@ package com.market.servicemarket.controller;
 
 import com.market.servicemarket.business.base.JobBusiness;
 import com.market.servicemarket.request.BaseRequest;
+import com.market.servicemarket.request.JobApplyRequest;
 import com.market.servicemarket.response.BaseResponse;
 import com.market.servicemarket.util.ConfigurationUtil;
 import com.market.servicemarket.util.Constants;
@@ -54,7 +55,7 @@ public class JobController {
     }
 
     @PostMapping("/apply-job")
-    public ResponseEntity<BaseResponse> applyJob(@Valid @RequestBody BaseRequest request)throws Exception{
+    public ResponseEntity<BaseResponse> applyJob(@Valid @RequestBody JobApplyRequest request)throws Exception{
 
 
         BaseResponse responseObject = jobBusiness.applyJob(request);

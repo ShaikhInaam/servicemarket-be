@@ -6,6 +6,7 @@ import com.market.servicemarket.business.base.JobBusiness;
 import com.market.servicemarket.dto.JobShiftJsonRequest;
 import com.market.servicemarket.dto.SmpGenericApiCallJsonResponse;
 import com.market.servicemarket.request.BaseRequest;
+import com.market.servicemarket.request.JobApplyRequest;
 import com.market.servicemarket.response.BaseResponse;
 import com.market.servicemarket.util.ConfigurationUtil;
 import com.market.servicemarket.util.Constants;
@@ -116,7 +117,7 @@ public class JobBusinessImpl implements JobBusiness {
 
 
     @Override
-    public BaseResponse applyJob(BaseRequest request) {
+    public BaseResponse applyJob(JobApplyRequest request) {
 
         ObjectMapper mapper = new ObjectMapper();
         HttpHeaders header = creatHeaders();
