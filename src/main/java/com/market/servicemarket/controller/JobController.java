@@ -53,4 +53,15 @@ public class JobController {
 
     }
 
+    @PostMapping("/apply-job")
+    public ResponseEntity<BaseResponse> applyJob(@Valid @RequestBody BaseRequest request)throws Exception{
+
+
+        BaseResponse responseObject = jobBusiness.applyJob(request);
+        transactionLoggerService.log(request.getTransactionId(), "/portal/job/apply-job",
+                request, responseObject, configurationUtil.getMessage(Constants.POST_REQUEST_RESPONSE_CODE));
+
+        return ResponseEntity.ok(responseObject);
+
+    }
 }

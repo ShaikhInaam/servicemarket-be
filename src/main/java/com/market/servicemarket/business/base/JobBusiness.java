@@ -9,5 +9,6 @@ public interface JobBusiness {
 
     BaseResponse getJobShift(BaseRequest request);
     BaseResponse getJobType(BaseRequest request);
+    BaseResponse applyJob(BaseRequest request);
 
 }
