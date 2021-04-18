@@ -125,7 +125,7 @@ public class JobBusinessImpl implements JobBusiness {
         JobShiftJsonRequest jsonRequest = new JobShiftJsonRequest();
         jsonRequest.setTransactionId(request.getTransactionId());
 
-        String url = configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_JOB_SHIFT_API);
+        String url = configurationUtil.getMessage(Constants.JOBS_PORTAL_BASE_URL)+configurationUtil.getMessage(Constants.JOBS_PORTAL_APPLY_JOB_API);
 
         LinkedHashMap response = (LinkedHashMap) utility.callPostJson(url, header, jsonRequest, SmpGenericApiCallJsonResponse.class);
         transactionLoggerBEService.log(jsonRequest.getTransactionId(), url,

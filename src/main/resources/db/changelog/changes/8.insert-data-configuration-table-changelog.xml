@@ -26,6 +26,7 @@
             Insert into configuration (code, message_english) values ('JP002', 'https://service-market-jobs-portal.herokuapp.com/');
             Insert into configuration (code, message_english) values ('JP003', 'job/job-shift');
             Insert into configuration (code, message_english) values ('JP004', 'job/job-type');
+            Insert into configuration (code, message_english) values ('JP005', 'job/apply-job');
 
         </sql>
 
