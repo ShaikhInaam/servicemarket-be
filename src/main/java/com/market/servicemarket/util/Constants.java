@@ -33,5 +33,6 @@ public class Constants {
     public static String JOBS_PORTAL_BASE_URL = "JP002";
     public static String JOBS_PORTAL_JOB_SHIFT_API = "JP003";
     public static String JOBS_PORTAL_JOB_TYPE_API = "JP004";
+    public static String JOBS_PORTAL_JOB_GET_JOBS_API = "JP006";
 
 }

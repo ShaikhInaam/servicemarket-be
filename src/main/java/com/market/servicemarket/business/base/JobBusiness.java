@@ -1,6 +1,7 @@
 package com.market.servicemarket.business.base;
 
 import com.market.servicemarket.request.BaseRequest;
+import com.market.servicemarket.request.GetJobsRequest;
 import com.market.servicemarket.response.BaseResponse;
 import org.springframework.stereotype.Service;
 
@@ -9,5 +10,6 @@ public interface JobBusiness {
 
     BaseResponse getJobShift(BaseRequest request);
     BaseResponse getJobType(BaseRequest request);
+    BaseResponse getJobs(GetJobsRequest request);
 
 }
