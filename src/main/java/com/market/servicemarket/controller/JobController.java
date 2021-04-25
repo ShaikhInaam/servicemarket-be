@@ -2,6 +2,7 @@ package com.market.servicemarket.controller;
 
 import com.market.servicemarket.business.base.JobBusiness;
 import com.market.servicemarket.request.BaseRequest;
+import com.market.servicemarket.request.JobApplyRequest;
 import com.market.servicemarket.request.GetJobsRequest;
 import com.market.servicemarket.request.JobPostRequest;
 import com.market.servicemarket.response.BaseResponse;
@@ -78,4 +79,15 @@ public class JobController {
 
     }
 
+    @PostMapping("/apply-job")
+    public ResponseEntity<BaseResponse> applyJob(@Valid @RequestBody JobApplyRequest request)throws Exception{
+
+
+        BaseResponse responseObject = jobBusiness.applyJob(request);
+        transactionLoggerService.log(request.getTransactionId(), "/portal/job/apply-job",
+                request, responseObject, configurationUtil.getMessage(Constants.POST_REQUEST_RESPONSE_CODE));
+
+        return ResponseEntity.ok(responseObject);
+
+    }
 }
