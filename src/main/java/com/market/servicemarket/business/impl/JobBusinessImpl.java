@@ -48,7 +48,7 @@ public class JobBusinessImpl implements JobBusiness {
 
 
         ObjectMapper mapper = new ObjectMapper();
-        HttpHeaders header = creatHeaders();JP007
+        HttpHeaders header = creatHeaders();
 
         JobShiftJsonRequest jsonRequest = new JobShiftJsonRequest();
         jsonRequest.setTransactionId(request.getTransactionId());
