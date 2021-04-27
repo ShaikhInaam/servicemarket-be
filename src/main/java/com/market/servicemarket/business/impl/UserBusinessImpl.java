@@ -125,12 +125,12 @@ public class UserBusinessImpl implements UserBusiness {
 
         if(Objects.nonNull(updateUserInfoRequest.getCountry())){
 
-            userDetailsEntity.setCity(updateUserInfoRequest.getCountry());
+            userDetailsEntity.setCountry(updateUserInfoRequest.getCountry());
         }
 
         if(Objects.nonNull(updateUserInfoRequest.getEmail())){
 
-            userDetailsEntity.setCity(updateUserInfoRequest.getEmail());
+            userDetailsEntity.setEmail(updateUserInfoRequest.getEmail());
         }
 
         userService.saveUser(userEntity);
