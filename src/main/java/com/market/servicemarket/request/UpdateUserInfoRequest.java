@@ -10,30 +10,30 @@ import java.sql.Date;
 
 @Getter
 @Setter
-public class UpdateRegisteredUserRequest extends BaseRequest{
+public class UpdateUserInfoRequest extends BaseRequest{
 
     @NotBlank
     private String username;
 
-    @NotBlank
+    //@NotBlank
     private String name;
 
     @Past
     private Date dateOfBirth;
 
-    @NotBlank
+    //@NotBlank
     private String nicNumber;
 
     @Future
     private Date nicExpiryDate;
 
-    @NotBlank
+    //@NotBlank
     private String city;
 
-    @NotBlank
+    //@NotBlank
     private String country;
 
-    @NotBlank
+    //@NotBlank
     private String email;
 
 
