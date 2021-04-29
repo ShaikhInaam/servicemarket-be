@@ -2,7 +2,7 @@ package com.market.servicemarket.controller;
 
 import com.market.servicemarket.business.base.UserBusiness;
 import com.market.servicemarket.request.RegisterUser;
-import com.market.servicemarket.request.UpdateRegisteredUserRequest;
+import com.market.servicemarket.request.UpdateUserInfoRequest;
 import com.market.servicemarket.response.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,10 +27,10 @@ public class UserController {
 
     //api to update user information
     @PostMapping("/update")
-    public ResponseEntity<BaseResponse> updateUserAndUserDetailsInformation(
-                                  @Valid @RequestBody UpdateRegisteredUserRequest request) throws Exception{
+    public ResponseEntity<BaseResponse> updateUserInfo(
+                                  @Valid @RequestBody UpdateUserInfoRequest request) throws Exception{
 
-        BaseResponse response = userBusiness.updateUserAndUserDetailsInformation(request);
+        BaseResponse response = userBusiness.updateUserInfo(request);
         return ResponseEntity.ok(response);
     }
 }
