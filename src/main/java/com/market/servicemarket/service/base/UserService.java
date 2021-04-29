@@ -10,9 +10,6 @@ import java.sql.Date;
 @Service
 public interface UserService {
 
-    UserDetailsEntity getUserByEmail(String email);
-    UserDetailsEntity getUserByNic(String nic);
-    UserDetailsEntity getUserOneByEmail(String email);
     void saveUserDetail(UserDetailsEntity userDetailsEntity);
     void saveUser(UserEntity userEntity);
     Boolean isUserAvailableByNameOrNicOrEmail(String username, String email, String nicNumber);
@@ -23,4 +20,5 @@ public interface UserService {
 
     //update user details information
     boolean updateUserDetailsInformation(String email, String nicNumber, String username);
+    UserEntity getUser(String username, String password);
 }

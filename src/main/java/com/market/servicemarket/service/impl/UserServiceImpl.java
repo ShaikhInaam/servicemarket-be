@@ -66,6 +66,18 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public UserEntity getUser(String username, String password){
+
+        UserEntity userEntity = null;
+        userEntity = userRepository.findByUsernameAndUserPass(username, password);
+        if(CommanUtil.isNotNull(userEntity)){
+            return userEntity;
+        }
+
+        return null;
+    }
+
     //update user information
     @Override
     public UserEntity findByUserName(String username) {

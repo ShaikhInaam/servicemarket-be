@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Setter
 @Getter
@@ -22,6 +23,7 @@ public class UsageAnalysisEntity implements Serializable {
     private String operation;
     private String  url;
     private String ip;
+    private Timestamp timestamp;
 
 
 }

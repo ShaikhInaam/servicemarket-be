@@ -10,11 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDetailsRepository extends JpaRepository<UserDetailsEntity, Integer> {
 
-
-    UserDetailsEntity findByEmail(String email);
-    UserDetailsEntity findByNicNumber(String nicNumber);
     UserDetailsEntity findTopByNicNumber(String nicNumber);
-
     UserDetailsEntity findTopByEmail(String email);
 
     //query to update user details of  registration information

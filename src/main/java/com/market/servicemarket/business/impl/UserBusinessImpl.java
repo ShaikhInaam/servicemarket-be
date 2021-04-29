@@ -23,14 +23,6 @@ public class UserBusinessImpl implements UserBusiness {
     @Autowired
     UserService userService;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
-    private JwtUserDetailsService userDetailsService;
 
     @Autowired
     ConfigurationUtil configurationUtil;
