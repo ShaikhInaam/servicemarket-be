@@ -9,6 +9,8 @@ import com.market.servicemarket.util.CommanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -18,6 +20,34 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    UserDetailsEntity userDetailsEntity=null;
+
+    UserEntity userEntity = null;
+
+
+    @Override
+    public UserDetailsEntity getUserByEmail(String email) {
+
+        userDetailsEntity= userDetailsRepository.findTopByEmail(email);
+        if(CommanUtil.isNotNull(userDetailsEntity)){
+            return userDetailsEntity;
+        }
+        return null;
+    }
+
+    @Override
+    public UserDetailsEntity getUserByNic(String nic) {
+        userDetailsEntity= userDetailsRepository.findTopByNicNumber(nic);
+        if(CommanUtil.isNotNull(userDetailsEntity)){
+            return userDetailsEntity;
+        }
+        return null;
+    }
+
+    @Override
+    public UserDetailsEntity getUserOneByEmail(String email) {
+        return null;
+    }
 
     @Override
     public void saveUserDetail(UserDetailsEntity userDetailsEntity) {
@@ -46,6 +76,27 @@ public class UserServiceImpl implements UserService {
         }
 
         return null;
+    }
+
+    //update user information
+    @Override
+    public UserEntity findByUserName(String username) {
+
+        userEntity = userRepository.findByUsername(username);
+
+        if(CommanUtil.isNotNull(userEntity)){
+            return userEntity;
+        }
+
+        return null;
+    }
+
+    //update user details information
+    @Override
+    public boolean updateUserDetailsInformation(String email, String nicNumber, String username) {
+
+        return userDetailsRepository.updateUserDetailsInformation(email, nicNumber,username);
+
     }
 
 }

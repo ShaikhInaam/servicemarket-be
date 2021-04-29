@@ -5,6 +5,7 @@ import com.market.servicemarket.entity.UserDetailsEntity;
 import com.market.servicemarket.entity.UserEntity;
 import com.market.servicemarket.repository.UserRepository;
 import com.market.servicemarket.request.RegisterUser;
+import com.market.servicemarket.request.UpdateUserInfoRequest;
 import com.market.servicemarket.response.BaseResponse;
 import com.market.servicemarket.security.JwtUserDetailsService;
 import com.market.servicemarket.service.base.UserService;
@@ -36,6 +37,7 @@ public class UserBusinessImpl implements UserBusiness {
        Boolean checkUserDetails = userService.isUserAvailableByNameOrNicOrEmail(
                registerUser.getUsername(), registerUser.getEmail(), registerUser.getNicNumber());
 
+
        if(Objects.nonNull(checkUserDetails) && checkUserDetails){
            BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.FAILURE_RESPONSE_CODE)
                    .responseMessage(configurationUtil.getMessage(Constants.FAILURE_RESPONSE_CODE)).build();
@@ -58,6 +60,73 @@ public class UserBusinessImpl implements UserBusiness {
 
         userService.saveUserDetail(userDetailsEntity);
 
+
+        BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
+                .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).build();
+
+        return baseResponse;
+    }
+
+    //update user and user details information
+    @Transactional
+    @Override
+    public BaseResponse updateUserInfo(UpdateUserInfoRequest updateUserInfoRequest) throws Exception {
+
+
+        UserEntity userEntity = userService.findByUserName(updateUserInfoRequest.getUsername());
+
+        if(Objects.isNull(userEntity)){
+            BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.FAILURE_RESPONSE_CODE)
+                    .responseMessage(configurationUtil.getMessage(Constants.FAILURE_RESPONSE_CODE)).build();
+            return baseResponse;
+        }
+
+        if(Objects.nonNull(updateUserInfoRequest.getName())){
+            userEntity.setName(updateUserInfoRequest.getName());
+        }
+
+            //check to update user details information
+        Boolean updateCheckUserDetails = userService.updateUserDetailsInformation(
+                updateUserInfoRequest.getUsername(), updateUserInfoRequest.getEmail(),
+                updateUserInfoRequest.getNicNumber());
+
+        if(Objects.nonNull(updateCheckUserDetails) && updateCheckUserDetails){
+            BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.FAILURE_RESPONSE_CODE)
+                    .responseMessage(configurationUtil.getMessage(Constants.FAILURE_RESPONSE_CODE)).build();
+            return baseResponse;
+        }
+
+        UserDetailsEntity userDetailsEntity = userEntity.getUserDetailsEntity();
+
+        if(Objects.nonNull(updateUserInfoRequest.getNicNumber())){
+
+            userDetailsEntity.setNicNumber(updateUserInfoRequest.getNicNumber());
+        }
+
+        if(Objects.nonNull(updateUserInfoRequest.getNicExpiryDate())){
+            userDetailsEntity.setNicExpiryDate(updateUserInfoRequest.getNicExpiryDate());
+        }
+
+        if(Objects.nonNull(updateUserInfoRequest.getDateOfBirth())){
+            userDetailsEntity.setDateOfBirth(updateUserInfoRequest.getDateOfBirth());
+        }
+        if(Objects.nonNull(updateUserInfoRequest.getCity())){
+
+            userDetailsEntity.setCity(updateUserInfoRequest.getCity());
+        }
+
+        if(Objects.nonNull(updateUserInfoRequest.getCountry())){
+
+            userDetailsEntity.setCountry(updateUserInfoRequest.getCountry());
+        }
+
+        if(Objects.nonNull(updateUserInfoRequest.getEmail())){
+
+            userDetailsEntity.setEmail(updateUserInfoRequest.getEmail());
+        }
+
+        userService.saveUser(userEntity);
+        userService.saveUserDetail(userDetailsEntity);
 
         BaseResponse baseResponse = BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
                 .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).build();
